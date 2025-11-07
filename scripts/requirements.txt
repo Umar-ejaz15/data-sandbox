@@ -1,0 +1,13 @@
+# Option 1: tabula-py (requires Java)
+# tabula-py>=2.9.0
+
+# Option 2: pdfplumber (no Java required - recommended)
+pdfplumber>=0.11.0
+
+pandas>=2.1.0
+openpyxl>=3.1.0
+
+# Note: If using tabula-py, Java must be installed
+# Download Java from: https://www.oracle.com/java/technologies/downloads/
+# Or use OpenJDK: https://adoptium.net/
+
