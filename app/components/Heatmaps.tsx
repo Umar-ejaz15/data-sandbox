@@ -8,11 +8,16 @@ export default function Heatmaps() {
   const { provinces, districts } = useAppStore();
 
   // Create heatmap data from districts
-  const districtData = districts.slice(0, 20).map(d => [
+  const districtData: [string, string, number][] = districts.slice(0, 20).map(d => [
     d.district,
     d.province,
     d.population
   ]);
+
+  // Calculate max population for visualMap
+  const maxPopulation = districtData.length > 0 
+    ? Math.max(...districtData.map(d => d[2] as number))
+    : 0;
 
   const heatmapOption = {
     title: {
@@ -23,7 +28,8 @@ export default function Heatmaps() {
     tooltip: {
       position: 'top',
       formatter: (params: any) => {
-        return `${params.data[0]}<br/>${params.data[1]}<br/>Population: ${(params.data[2] / 1_000_000).toFixed(2)}M`;
+        const pop = typeof params.data[2] === 'number' ? params.data[2] : 0;
+        return `${params.data[0]}<br/>${params.data[1]}<br/>Population: ${(pop / 1_000_000).toFixed(2)}M`;
       }
     },
     grid: {
@@ -46,7 +52,7 @@ export default function Heatmaps() {
     },
     visualMap: {
       min: 0,
-      max: Math.max(...districtData.map(d => d[2])),
+      max: maxPopulation,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
