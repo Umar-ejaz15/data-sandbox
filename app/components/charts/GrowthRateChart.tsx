@@ -124,12 +124,14 @@ export default function GrowthRateChart({ regions }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
-      <div className="mb-4">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Growth Rate Trends</h3>
-        <p className="text-gray-700">Annual population growth rates across regions from 2017 to 2023</p>
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200">
+      <div className="mb-3 sm:mb-4">
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Growth Rate Trends</h3>
+        <p className="text-gray-700 text-sm sm:text-base">Annual population growth rates across regions from 2017 to 2023</p>
       </div>
-      <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
+      <div className="h-[400px] sm:h-[500px] lg:h-[600px] w-full">
+        <ReactECharts option={option} style={{ height: '100%', width: '100%' }} />
+      </div>
     </div>
   );
 }

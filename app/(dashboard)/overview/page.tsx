@@ -63,14 +63,16 @@ export default function OverviewPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 sm:space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Overview</h1>
-          <p className="text-gray-700 text-lg">Key national statistics and metrics</p>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Overview</h1>
+          <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Key national statistics and metrics</p>
         </div>
         {regions.length > 0 && (
-          <ComparisonMode regions={regions} onCompare={handleCompare} />
+          <div className="flex-shrink-0">
+            <ComparisonMode regions={regions} onCompare={handleCompare} />
+          </div>
         )}
       </div>
 

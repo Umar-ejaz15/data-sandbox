@@ -155,30 +155,33 @@ export default function PredictionChart({ predictions, regionName }: Props) {
   const currentYear = predictions[0].year;
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
-      <div className="mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">10-Year Population Forecast</h3>
-        <p className="text-gray-700 mb-4">AI-powered predictions based on historical growth patterns for {regionName}</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Predicted Population ({latestPrediction.year})</div>
-            <div className="text-2xl font-bold text-blue-600">{(latestPrediction.total_population / 1_000_000).toFixed(1)}M</div>
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200">
+      <div className="mb-4 sm:mb-6">
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">10-Year Population Forecast</h3>
+        <p className="text-gray-700 text-sm sm:text-base mb-3 sm:mb-4">AI-powered predictions based on historical growth patterns for {regionName}</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Predicted Population ({latestPrediction.year})</div>
+            <div className="text-xl sm:text-2xl font-bold text-blue-600">{(latestPrediction.total_population / 1_000_000).toFixed(1)}M</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Predicted Urban ({latestPrediction.year})</div>
-            <div className="text-2xl font-bold text-green-600">{(latestPrediction.urban / 1_000_000).toFixed(1)}M</div>
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Predicted Urban ({latestPrediction.year})</div>
+            <div className="text-xl sm:text-2xl font-bold text-green-600">{(latestPrediction.urban / 1_000_000).toFixed(1)}M</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Predicted Rural ({latestPrediction.year})</div>
-            <div className="text-2xl font-bold text-orange-600">{(latestPrediction.rural / 1_000_000).toFixed(1)}M</div>
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Predicted Rural ({latestPrediction.year})</div>
+            <div className="text-xl sm:text-2xl font-bold text-orange-600">{(latestPrediction.rural / 1_000_000).toFixed(1)}M</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Predicted Literacy ({latestPrediction.year})</div>
-            <div className="text-2xl font-bold text-purple-600">{latestPrediction.literacy_rate.toFixed(1)}%</div>
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Predicted Literacy ({latestPrediction.year})</div>
+            <div className="text-xl sm:text-2xl font-bold text-purple-600">{latestPrediction.literacy_rate.toFixed(1)}%</div>
           </div>
         </div>
       </div>
-      <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
+      <div className="h-[400px] sm:h-[500px] lg:h-[600px] w-full">
+        <ReactECharts option={option} style={{ height: '100%', width: '100%' }} />
+      </div>
     </div>
   );
 }
+

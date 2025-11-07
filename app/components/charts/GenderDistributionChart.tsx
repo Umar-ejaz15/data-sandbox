@@ -90,29 +90,31 @@ export default function GenderDistributionChart({ region }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
-      <div className="mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Gender Distribution</h3>
-        <p className="text-gray-700 mb-4">Breakdown of population by gender in {region.name}</p>
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Male</div>
-            <div className="text-2xl font-bold text-blue-600">{malePercent}%</div>
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200">
+      <div className="mb-4 sm:mb-6">
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">Gender Distribution</h3>
+        <p className="text-gray-700 text-sm sm:text-base mb-3 sm:mb-4">Breakdown of population by gender in {region.name}</p>
+        <div className="grid grid-cols-3 gap-2 sm:gap-4">
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Male</div>
+            <div className="text-xl sm:text-2xl font-bold text-blue-600">{malePercent}%</div>
             <div className="text-xs text-gray-600">{(region.demographics.male / 1_000_000).toFixed(2)}M</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Female</div>
-            <div className="text-2xl font-bold text-pink-600">{femalePercent}%</div>
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Female</div>
+            <div className="text-xl sm:text-2xl font-bold text-pink-600">{femalePercent}%</div>
             <div className="text-xs text-gray-600">{(region.demographics.female / 1_000_000).toFixed(2)}M</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 shadow-md border border-gray-200">
-            <div className="text-sm text-gray-700 mb-1">Transgender</div>
-            <div className="text-2xl font-bold text-purple-600">{transPercent}%</div>
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 shadow-md border border-gray-200">
+            <div className="text-xs sm:text-sm text-gray-700 mb-1">Transgender</div>
+            <div className="text-xl sm:text-2xl font-bold text-purple-600">{transPercent}%</div>
             <div className="text-xs text-gray-600">{(region.demographics.transgender / 1_000).toFixed(0)}K</div>
           </div>
         </div>
       </div>
-      <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
+      <div className="h-[400px] sm:h-[500px] lg:h-[600px] w-full">
+        <ReactECharts option={option} style={{ height: '100%', width: '100%' }} />
+      </div>
     </div>
   );
 }

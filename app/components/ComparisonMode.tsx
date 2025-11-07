@@ -34,17 +34,18 @@ export default function ComparisonMode({ regions, onCompare }: Props) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg"
+        className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg text-sm sm:text-base"
       >
-        <BarChart3 className="h-4 w-4" />
-        <span>Compare Regions</span>
+        <BarChart3 className="h-4 w-4 flex-shrink-0" />
+        <span className="hidden sm:inline">Compare Regions</span>
+        <span className="sm:hidden">Compare</span>
       </button>
 
       {isOpen && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)}></div>
-          <div className="absolute right-0 mt-2 w-96 bg-white rounded-xl shadow-2xl border-2 border-gray-200 z-50 p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Compare Regions (Max 3)</h3>
+          <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white rounded-xl shadow-2xl border-2 border-gray-200 z-50 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Compare Regions (Max 3)</h3>
             
             <div className="space-y-2 mb-4 max-h-48 overflow-y-auto">
               {selectedRegions.map((region) => (

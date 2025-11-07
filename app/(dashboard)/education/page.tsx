@@ -38,12 +38,12 @@ export default function EducationPage() {
   const regions = censusData.regions.filter(r => r.name !== 'Pakistan');
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Education Statistics</h1>
-        <p className="text-gray-700 text-lg">Student enrolment and literacy rates across different education levels</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Education Statistics</h1>
+        <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Student enrolment and literacy rates across different education levels</p>
       </div>
-      <div className="grid grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8">
         <Education3DChart regions={regions} />
         <LiteracyComparisonChart regions={regions} />
       </div>

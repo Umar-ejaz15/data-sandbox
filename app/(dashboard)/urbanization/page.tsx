@@ -37,10 +37,10 @@ export default function UrbanizationPage() {
   const regions = censusData.regions.filter(r => r.name !== 'Pakistan');
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Urbanization Trends</h1>
-        <p className="text-gray-700 text-lg">Analysis of urban and rural population distribution</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Urbanization Trends</h1>
+        <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Analysis of urban and rural population distribution</p>
       </div>
       <UrbanRuralChart regions={regions} />
     </div>

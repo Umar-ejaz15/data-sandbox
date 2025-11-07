@@ -40,27 +40,27 @@ export default function DisabilityPage() {
   const regions = censusData.regions.filter(r => r.name !== 'Pakistan');
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Disability & Functional Limitations</h1>
-        <p className="text-gray-700 text-lg">Comprehensive disability statistics and analysis</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Disability & Functional Limitations</h1>
+        <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Comprehensive disability statistics and analysis</p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-200">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 border-2 border-gray-200">
         <label className="block text-sm font-bold text-gray-900 mb-2">Search or Select Region</label>
-        <div className="flex gap-4">
-          <div className="flex-1">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex-1 w-full">
             <SearchBar 
               regions={censusData.regions}
               onSelectRegion={(region) => setSelectedRegion(region.name)}
               selectedRegion={selectedRegionData}
             />
           </div>
-          <div className="w-64">
+          <div className="w-full sm:w-64">
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="w-full px-4 py-3 bg-white border-2 border-blue-200 rounded-xl shadow-md font-semibold text-gray-900 cursor-pointer"
+              className="w-full px-4 py-3 bg-white border-2 border-blue-200 rounded-xl shadow-md font-semibold text-gray-900 cursor-pointer text-sm sm:text-base"
             >
               {censusData.regions.map(r => (
                 <option key={r.name} value={r.name}>{r.name}</option>
@@ -70,7 +70,7 @@ export default function DisabilityPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         <Disability3DChart regions={regions} />
         <DisabilityBreakdownChart region={selectedRegionData} />
       </div>

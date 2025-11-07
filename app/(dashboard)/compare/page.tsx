@@ -59,11 +59,11 @@ function CompareContent() {
             <p className="text-gray-700 text-lg">Compare statistics across multiple regions</p>
           </div>
         </div>
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-8 text-center">
-          <p className="text-yellow-800 text-lg font-semibold">
+        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 sm:p-8 text-center">
+          <p className="text-yellow-800 text-base sm:text-lg font-semibold">
             Please select at least 2 regions to compare from the Overview page.
           </p>
-          <Link href="/overview" className="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <Link href="/overview" className="mt-4 inline-block px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base">
             Go to Overview
           </Link>
         </div>
@@ -223,24 +223,24 @@ function CompareContent() {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center gap-4">
-        <Link href="/overview" className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+    <div className="space-y-6 sm:space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+        <Link href="/overview" className="self-start p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
           <ArrowLeft className="h-5 w-5 text-gray-700" />
         </Link>
-        <div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Region Comparison</h1>
-          <p className="text-gray-700 text-lg">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Region Comparison</h1>
+          <p className="text-gray-700 text-sm sm:text-base lg:text-lg break-words">
             Comparing {regions.map(r => r.name).join(', ')}
           </p>
         </div>
       </div>
 
       {/* Key Metrics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {regions.map((region, idx) => (
-          <div key={region.name} className="bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">{region.name}</h3>
+          <div key={region.name} className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 border-2 border-gray-200">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 truncate">{region.name}</h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -284,97 +284,105 @@ function CompareContent() {
       </div>
 
       {/* Comparison Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
-          <ReactECharts option={populationOption} style={{ height: '400px', width: '100%' }} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200">
+          <div className="h-[300px] sm:h-[400px] w-full">
+            <ReactECharts option={populationOption} style={{ height: '100%', width: '100%' }} />
+          </div>
         </div>
-        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
-          <ReactECharts option={growthOption} style={{ height: '400px', width: '100%' }} />
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200">
+          <div className="h-[300px] sm:h-[400px] w-full">
+            <ReactECharts option={growthOption} style={{ height: '100%', width: '100%' }} />
+          </div>
         </div>
-        <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200 lg:col-span-2">
-          <ReactECharts option={literacyOption} style={{ height: '400px', width: '100%' }} />
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200 lg:col-span-2">
+          <div className="h-[300px] sm:h-[400px] w-full">
+            <ReactECharts option={literacyOption} style={{ height: '100%', width: '100%' }} />
+          </div>
         </div>
       </div>
 
       {/* Detailed Comparison Table */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200 overflow-x-auto">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6">Detailed Statistics</h3>
-        <table className="w-full">
-          <thead>
-            <tr className="border-b-2 border-gray-200">
-              <th className="text-left p-4 text-gray-900 font-bold">Metric</th>
-              {regions.map(r => (
-                <th key={r.name} className="text-right p-4 text-gray-900 font-bold">{r.name}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Total Population</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {(r.demographics.total_population / 1_000_000).toFixed(1)}M
-                </td>
-              ))}
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Male Population</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {(r.demographics.male / 1_000_000).toFixed(1)}M
-                </td>
-              ))}
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Female Population</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {(r.demographics.female / 1_000_000).toFixed(1)}M
-                </td>
-              ))}
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Sex Ratio</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {r.demographics.sex_ratio.toFixed(2)}
-                </td>
-              ))}
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Growth Rate (%)</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {r.demographics.annual_growth_rate_2017_2023.toFixed(2)}%
-                </td>
-              ))}
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Literacy Rate (%)</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {r.education.total.literacy_rate.toFixed(1)}%
-                </td>
-              ))}
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="p-4 text-gray-700">Urban Population (%)</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {r.demographics.urban_proportion.toFixed(1)}%
-                </td>
-              ))}
-            </tr>
-            <tr>
-              <td className="p-4 text-gray-700">Household Size</td>
-              {regions.map(r => (
-                <td key={r.name} className="text-right p-4 font-semibold text-gray-900">
-                  {r.demographics.avg_household_size.toFixed(2)}
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border-2 border-gray-200 overflow-x-auto">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Detailed Statistics</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[600px]">
+            <thead>
+              <tr className="border-b-2 border-gray-200">
+                <th className="text-left p-3 sm:p-4 text-gray-900 font-bold text-sm sm:text-base">Metric</th>
+                {regions.map(r => (
+                  <th key={r.name} className="text-right p-3 sm:p-4 text-gray-900 font-bold text-sm sm:text-base">{r.name}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Total Population</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {(r.demographics.total_population / 1_000_000).toFixed(1)}M
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Male Population</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {(r.demographics.male / 1_000_000).toFixed(1)}M
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Female Population</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {(r.demographics.female / 1_000_000).toFixed(1)}M
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Sex Ratio</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {r.demographics.sex_ratio.toFixed(2)}
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Growth Rate (%)</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {r.demographics.annual_growth_rate_2017_2023.toFixed(2)}%
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Literacy Rate (%)</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {r.education.total.literacy_rate.toFixed(1)}%
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Urban Population (%)</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {r.demographics.urban_proportion.toFixed(1)}%
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="p-3 sm:p-4 text-gray-700 text-sm sm:text-base">Household Size</td>
+                {regions.map(r => (
+                  <td key={r.name} className="text-right p-3 sm:p-4 font-semibold text-gray-900 text-sm sm:text-base">
+                    {r.demographics.avg_household_size.toFixed(2)}
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

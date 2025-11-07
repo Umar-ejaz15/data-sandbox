@@ -19,9 +19,9 @@ export default function SearchBar({ regions, onSelectRegion, selectedRegion }: P
   );
 
   return (
-    <div className="relative w-full max-w-md">
+    <div className="relative w-full max-w-full sm:max-w-md">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
         <input
           type="text"
           placeholder="Search regions..."
@@ -32,7 +32,7 @@ export default function SearchBar({ regions, onSelectRegion, selectedRegion }: P
           }}
           onFocus={() => setIsOpen(true)}
           onBlur={() => setTimeout(() => setIsOpen(false), 200)}
-          className="w-full pl-10 pr-10 py-3 bg-white border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium text-gray-900 placeholder-gray-400 transition-all"
+          className="w-full pl-9 sm:pl-10 pr-9 sm:pr-10 py-2.5 sm:py-3 bg-white border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium text-sm sm:text-base text-gray-900 placeholder-gray-400 transition-all"
         />
         {searchQuery && (
           <button

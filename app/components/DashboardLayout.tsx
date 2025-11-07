@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 
@@ -9,6 +9,8 @@ interface Props {
 }
 
 export default function DashboardLayout({ children }: Props) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Subtle animated background elements */}
@@ -18,13 +20,16 @@ export default function DashboardLayout({ children }: Props) {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob animation-delay-4000"></div>
       </div>
 
-      <Navbar />
+      <Navbar onMenuClick={() => setIsMobileMenuOpen(true)} />
     
-      <div className="flex relative z-10">
-        <Sidebar />
+      <div className="flex relative z-10 pt-16 lg:pt-0">
+        <Sidebar 
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
         
-        <main className="flex-1 min-h-screen bg-white">
-          <div className="p-6 lg:p-8">
+        <main className="flex-1 min-h-screen bg-white w-full lg:w-auto">
+          <div className="p-4 sm:p-6 lg:p-8">
             {children}
           </div>
         </main>

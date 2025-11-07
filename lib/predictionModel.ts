@@ -1,4 +1,5 @@
 import { CensusRegion } from './fetchCensusData';
+import { predictMultipleRegionsWithTF } from './tfPredictionModel';
 
 export interface PredictionData {
   year: number;
@@ -13,7 +14,7 @@ export interface PredictionData {
 }
 
 /**
- * Predict future population using exponential growth model
+ * Predict future population using exponential growth model (fallback)
  */
 export function predictPopulation(
   region: CensusRegion,
@@ -63,18 +64,24 @@ export function predictPopulation(
 }
 
 /**
- * Predict for multiple regions
+ * Predict for multiple regions using TensorFlow.js (primary method)
+ * Falls back to exponential model if TensorFlow fails
  */
-export function predictMultipleRegions(
+export async function predictMultipleRegions(
   regions: CensusRegion[],
   years: number = 10
-): Map<string, PredictionData[]> {
-  const predictions = new Map<string, PredictionData[]>();
-  
-  for (const region of regions) {
-    predictions.set(region.name, predictPopulation(region, years));
+): Promise<Map<string, PredictionData[]>> {
+  try {
+    // Use TensorFlow.js for predictions
+    return await predictMultipleRegionsWithTF(regions, years);
+  } catch (error) {
+    console.warn('TensorFlow.js prediction failed, falling back to exponential model:', error);
+    // Fallback to simple exponential model
+    const predictions = new Map<string, PredictionData[]>();
+    for (const region of regions) {
+      predictions.set(region.name, predictPopulation(region, years));
+    }
+    return predictions;
   }
-  
-  return predictions;
 }
 

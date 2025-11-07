@@ -77,23 +77,23 @@ export default function DataInsights({ regions, nationalData }: Props) {
   });
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-gray-200">
-      <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-        <Lightbulb className="h-6 w-6 text-yellow-500" />
-        Data Insights
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 border-2 border-gray-200">
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+        <Lightbulb className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500 flex-shrink-0" />
+        <span>Data Insights</span>
       </h3>
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {insights.map((insight, idx) => {
           const Icon = insight.icon;
           return (
             <div
               key={idx}
-              className={`${insight.bg} ${insight.border} border-2 rounded-xl p-4 flex items-start gap-3`}
+              className={`${insight.bg} ${insight.border} border-2 rounded-lg sm:rounded-xl p-3 sm:p-4 flex items-start gap-2 sm:gap-3`}
             >
-              <Icon className={`h-5 w-5 ${insight.color} mt-0.5 shrink-0`} />
-              <div className="flex-1">
-                <h4 className={`font-bold ${insight.color} mb-1`}>{insight.title}</h4>
-                <p className="text-gray-700 text-sm">{insight.message}</p>
+              <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${insight.color} mt-0.5 shrink-0`} />
+              <div className="flex-1 min-w-0">
+                <h4 className={`font-bold ${insight.color} mb-1 text-sm sm:text-base`}>{insight.title}</h4>
+                <p className="text-gray-700 text-xs sm:text-sm">{insight.message}</p>
               </div>
             </div>
           );

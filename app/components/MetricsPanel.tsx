@@ -73,30 +73,30 @@ export default function MetricsPanel({ nationalData }: Props) {
   ];
 
   return (
-    <div className="mb-8">
-      <div className="mb-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Key National Metrics</h2>
-        <p className="text-gray-700">Overview of Pakistan's 2023 Census statistics</p>
+    <div className="mb-6 sm:mb-8">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Key National Metrics</h2>
+        <p className="text-gray-700 text-sm sm:text-base">Overview of Pakistan's 2023 Census statistics</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {metrics.map((metric, idx) => {
           const Icon = metric.icon;
           return (
             <div 
               key={idx} 
-              className={`${metric.bg} rounded-2xl p-6 shadow-lg border-2 ${metric.border} relative overflow-hidden`}
+              className={`${metric.bg} rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 ${metric.border} relative overflow-hidden`}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-700 mb-1 uppercase tracking-wide">{metric.title}</p>
-                  <p className={`text-4xl font-extrabold ${metric.color} mb-2`}>{metric.value}</p>
-                  <p className="text-sm text-gray-700">{metric.change}</p>
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-1 uppercase tracking-wide truncate">{metric.title}</p>
+                  <p className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold ${metric.color} mb-1 sm:mb-2`}>{metric.value}</p>
+                  <p className="text-xs sm:text-sm text-gray-700 truncate">{metric.change}</p>
                 </div>
-                <div className={`bg-gradient-to-br ${metric.gradient} rounded-xl p-3 shadow-md`}>
-                  <Icon className="h-8 w-8 text-white" />
+                <div className={`bg-gradient-to-br ${metric.gradient} rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-md flex-shrink-0 ml-2`}>
+                  <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
               </div>
-              <div className={`absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-br ${metric.gradient} opacity-10 rounded-tl-full`}></div>
+              <div className={`absolute bottom-0 right-0 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br ${metric.gradient} opacity-10 rounded-tl-full`}></div>
             </div>
           );
         })}

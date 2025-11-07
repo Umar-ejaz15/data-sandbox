@@ -38,12 +38,12 @@ export default function InfrastructurePage() {
   const regions = censusData.regions.filter(r => r.name !== 'Pakistan');
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Housing & Infrastructure</h1>
-        <p className="text-gray-700 text-lg">Housing types and building structures analysis</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Housing & Infrastructure</h1>
+        <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Housing types and building structures analysis</p>
       </div>
-      <div className="grid grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8">
         <Housing3DChart regions={regions} />
         <StructuresChart regions={regions} />
       </div>

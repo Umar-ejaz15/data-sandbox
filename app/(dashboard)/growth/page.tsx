@@ -39,13 +39,13 @@ export default function GrowthPage() {
   const regions = censusData.regions.filter(r => r.name !== 'Pakistan');
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Growth Rates & Trends</h1>
-        <p className="text-gray-700 text-lg">Population growth trends and demographic indicators</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Growth Rates & Trends</h1>
+        <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Population growth trends and demographic indicators</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         <GrowthRateChart regions={regions} />
         <SexRatioChart regions={regions} />
       </div>
