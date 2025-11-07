@@ -87,43 +87,17 @@ export default function SexRatioChart({ regions }: Props) {
         fontSize: 11,
         color: '#6b7280',
         fontWeight: 'bold'
-      },
-      markLine: {
-        data: [
-          { yAxis: 100, name: 'Equal Ratio', lineStyle: { color: '#6b7280', type: 'dashed', width: 2 } }
-        ],
-        label: {
-          formatter: 'Equal Ratio (100)',
-          position: 'end'
-        }
       }
     }]
   };
 
-  const avgRatio = regions.reduce((sum, r) => sum + r.demographics.sex_ratio, 0) / regions.length;
-
   return (
-    <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl shadow-xl p-8 border-2 border-pink-200">
-      <div className="mb-6">
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
+      <div className="mb-4">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">Sex Ratio Analysis</h3>
-        <p className="text-gray-700 mb-4">Number of males per 100 females across different regions</p>
-        <div className="bg-white rounded-lg p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="text-sm text-gray-600 mb-1">National Average</div>
-              <div className="text-3xl font-bold text-pink-600">{avgRatio.toFixed(2)}</div>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-600 mb-1">Interpretation</div>
-              <div className="text-lg font-semibold text-gray-800">
-                {avgRatio > 100 ? `${(avgRatio - 100).toFixed(2)}% more males` : `${(100 - avgRatio).toFixed(2)}% more females`}
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="text-gray-700">Ratio of males to females (per 100 females) across different regions</p>
       </div>
       <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
     </div>
   );
 }
-

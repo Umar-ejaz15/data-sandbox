@@ -90,13 +90,12 @@ export default function Population3DChart({ regions }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-100">
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
       <div className="mb-4">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">3D Population Visualization</h3>
-        <p className="text-gray-600">Interactive 3D bar chart showing population and area by region. Use mouse to rotate, zoom, and pan.</p>
+        <p className="text-gray-700">Interactive 3D bar chart showing population and area by region. Use mouse to rotate, zoom, and pan.</p>
       </div>
       <ReactECharts option={option} style={{ height: '700px', width: '100%' }} />
     </div>
   );
 }
-

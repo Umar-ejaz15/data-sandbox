@@ -76,7 +76,7 @@ export default function MetricsPanel({ nationalData }: Props) {
     <div className="mb-8">
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Key National Metrics</h2>
-        <p className="text-gray-600">Overview of Pakistan's 2023 Census statistics</p>
+        <p className="text-gray-700">Overview of Pakistan's 2023 Census statistics</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {metrics.map((metric, idx) => {
@@ -90,7 +90,7 @@ export default function MetricsPanel({ nationalData }: Props) {
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-gray-700 mb-1 uppercase tracking-wide">{metric.title}</p>
                   <p className={`text-4xl font-extrabold ${metric.color} mb-2`}>{metric.value}</p>
-                  <p className="text-sm text-gray-600">{metric.change}</p>
+                  <p className="text-sm text-gray-700">{metric.change}</p>
                 </div>
                 <div className={`bg-gradient-to-br ${metric.gradient} rounded-xl p-3 shadow-md`}>
                   <Icon className="h-8 w-8 text-white" />

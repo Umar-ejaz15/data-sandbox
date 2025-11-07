@@ -106,19 +106,19 @@ export default function DisabilityBreakdownChart({ region }: Props) {
   };
 
   return (
-    <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl shadow-xl p-8 border-2 border-rose-200">
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">Disability Analysis</h3>
         <p className="text-gray-700 mb-4">Detailed breakdown of different disability types in {region.name}</p>
-        <div className="bg-white rounded-lg p-4 shadow-md mb-4">
+        <div className="bg-gray-50 rounded-lg p-4 shadow-md mb-4 border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm text-gray-600 mb-1">Total Disability Rate</div>
+              <div className="text-sm text-gray-700 mb-1">Total Disability Rate</div>
               <div className="text-3xl font-bold text-red-600">{disabilityRate}%</div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-gray-600 mb-1">Total Cases</div>
-              <div className="text-2xl font-bold text-gray-800">{(totalDisability / 1_000_000).toFixed(2)}M</div>
+              <div className="text-sm text-gray-700 mb-1">Total Cases</div>
+              <div className="text-2xl font-bold text-gray-900">{(totalDisability / 1_000_000).toFixed(2)}M</div>
             </div>
           </div>
         </div>
@@ -145,4 +145,3 @@ export default function DisabilityBreakdownChart({ region }: Props) {
     </div>
   );
 }
-

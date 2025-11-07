@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pakistan Population Census 2023",
-  description: "Comprehensive demographic data, trends, and projections for Pakistan Census 2023",
+  title: "Pakistan Census 2023 Dashboard",
+  description: "Comprehensive demographic, education, disability, housing, and infrastructure statistics",
 };
 
 export default function RootLayout({

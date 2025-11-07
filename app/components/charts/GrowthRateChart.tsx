@@ -35,7 +35,7 @@ export default function GrowthRateChart({ regions }: Props) {
     legend: {
       data: ['Annual Growth Rate', 'Urban Growth', 'Rural Growth'],
       top: 35,
-      textStyle: { fontSize: 14, fontWeight: '600' }
+      textStyle: { fontSize: 14, fontWeight: '600', color: '#1f2937' }
     },
     grid: {
       left: '3%',
@@ -95,52 +95,41 @@ export default function GrowthRateChart({ regions }: Props) {
       {
         name: 'Urban Growth',
         type: 'line',
-        data: regions.map(r => r.demographics.urban.annual_growth_rate),
+        data: regions.map(r => {
+          const urban2017 = r.demographics.urban.population / Math.pow(1 + r.demographics.annual_growth_rate_2017_2023 / 100, 6);
+          const urbanGrowth = ((r.demographics.urban.population / urban2017 - 1) / 6) * 100;
+          return urbanGrowth;
+        }),
         smooth: true,
         itemStyle: { color: '#10B981' },
-        lineStyle: { width: 2, type: 'dashed' },
+        lineStyle: { width: 2 },
         symbol: 'circle',
         symbolSize: 6
       },
       {
         name: 'Rural Growth',
         type: 'line',
-        data: regions.map(r => r.demographics.rural.annual_growth_rate),
+        data: regions.map(r => {
+          const rural2017 = r.demographics.rural.population / Math.pow(1 + r.demographics.annual_growth_rate_2017_2023 / 100, 6);
+          const ruralGrowth = ((r.demographics.rural.population / rural2017 - 1) / 6) * 100;
+          return ruralGrowth;
+        }),
         smooth: true,
         itemStyle: { color: '#F59E0B' },
-        lineStyle: { width: 2, type: 'dashed' },
+        lineStyle: { width: 2 },
         symbol: 'circle',
         symbolSize: 6
       }
     ]
   };
 
-  const avgGrowth = regions.reduce((sum, r) => sum + r.demographics.annual_growth_rate_2017_2023, 0) / regions.length;
-  const maxGrowth = Math.max(...regions.map(r => r.demographics.annual_growth_rate_2017_2023));
-  const minGrowth = Math.min(...regions.map(r => r.demographics.annual_growth_rate_2017_2023));
-
   return (
-    <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl p-8 border-2 border-green-200">
-      <div className="mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Population Growth Trends</h3>
-        <p className="text-gray-700 mb-4">Annual growth rates from 2017 to 2023 across regions</p>
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg p-4 shadow-md">
-            <div className="text-sm text-gray-600 mb-1">Average Growth</div>
-            <div className="text-2xl font-bold text-green-600">{avgGrowth.toFixed(2)}%</div>
-          </div>
-          <div className="bg-white rounded-lg p-4 shadow-md">
-            <div className="text-sm text-gray-600 mb-1">Highest Growth</div>
-            <div className="text-2xl font-bold text-blue-600">{maxGrowth.toFixed(2)}%</div>
-          </div>
-          <div className="bg-white rounded-lg p-4 shadow-md">
-            <div className="text-sm text-gray-600 mb-1">Lowest Growth</div>
-            <div className="text-2xl font-bold text-orange-600">{minGrowth.toFixed(2)}%</div>
-          </div>
-        </div>
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
+      <div className="mb-4">
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">Growth Rate Trends</h3>
+        <p className="text-gray-700">Annual population growth rates across regions from 2017 to 2023</p>
       </div>
       <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
     </div>
   );
 }
-

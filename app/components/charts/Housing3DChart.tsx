@@ -35,16 +35,6 @@ export default function Housing3DChart({ regions }: Props) {
       borderWidth: 2,
       textStyle: { color: '#fff', fontSize: 13 }
     },
-    visualMap: {
-      max: Math.max(...regions.map(r => r.housing.total.households), 1),
-      inRange: {
-        color: ['#E3F2FD', '#1976D2', '#0D47A1']
-      },
-      calculable: true,
-      orient: 'horizontal',
-      left: 'center',
-      bottom: 30
-    },
     xAxis3D: {
       type: 'category',
       data: ['Pakka', 'Semi-Pakka', 'Kacha'],
@@ -64,7 +54,7 @@ export default function Housing3DChart({ regions }: Props) {
     },
     grid3D: {
       boxWidth: 200,
-      boxDepth: 100,
+      boxDepth: 80,
       viewControl: {
         projection: 'perspective',
         autoRotate: false,
@@ -72,29 +62,36 @@ export default function Housing3DChart({ regions }: Props) {
         zoomSensitivity: 1,
         panSensitivity: 1,
         distance: 200
+      },
+      light: {
+        main: { intensity: 1.2, shadow: true },
+        ambient: { intensity: 0.3 }
       }
     },
     series: [{
       type: 'surface',
-      data: regions.flatMap((r, i) => [
-        [0, i, r.housing.total.pakka / 1_000_000],
-        [1, i, r.housing.total.semi_pakka / 1_000_000],
-        [2, i, r.housing.total.kacha / 1_000_000]
+      data: regions.flatMap((r, regionIdx) => [
+        [0, regionIdx, r.housing.total.pakka / 1_000_000],
+        [1, regionIdx, r.housing.total.semi_pakka / 1_000_000],
+        [2, regionIdx, r.housing.total.kacha / 1_000_000]
       ]),
       itemStyle: {
-        opacity: 0.85
+        color: (params: any) => {
+          const colors = ['#3B82F6', '#10B981', '#F59E0B'];
+          return colors[params.data[0] % colors.length];
+        },
+        opacity: 0.8
       }
     }]
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-100">
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
       <div className="mb-4">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Housing Infrastructure (3D Surface)</h3>
-        <p className="text-gray-600">Three-dimensional surface chart showing housing type distribution across regions.</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">3D Housing Infrastructure</h3>
+        <p className="text-gray-700">Interactive 3D surface chart showing housing types distribution. Use mouse to rotate, zoom, and pan.</p>
       </div>
       <ReactECharts option={option} style={{ height: '700px', width: '100%' }} />
     </div>
   );
 }
-

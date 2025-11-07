@@ -35,7 +35,7 @@ export default function HouseholdSizeChart({ regions }: Props) {
     legend: {
       data: ['Total', 'Urban', 'Rural'],
       top: 35,
-      textStyle: { fontSize: 14, fontWeight: '600' }
+      textStyle: { fontSize: 14, fontWeight: '600', color: '#1f2937' }
     },
     grid: {
       left: '3%',
@@ -123,20 +123,13 @@ export default function HouseholdSizeChart({ regions }: Props) {
     ]
   };
 
-  const avgSize = regions.reduce((sum, r) => sum + r.demographics.avg_household_size, 0) / regions.length;
-
   return (
-    <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl shadow-xl p-8 border-2 border-orange-200">
-      <div className="mb-6">
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
+      <div className="mb-4">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">Household Size Analysis</h3>
-        <p className="text-gray-700 mb-4">Average number of persons per household across regions</p>
-        <div className="bg-white rounded-lg p-4 shadow-md">
-          <div className="text-sm text-gray-600 mb-1">National Average Household Size</div>
-          <div className="text-3xl font-bold text-orange-600">{avgSize.toFixed(2)} persons</div>
-        </div>
+        <p className="text-gray-700">Average number of persons per household across regions</p>
       </div>
       <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
     </div>
   );
 }
-

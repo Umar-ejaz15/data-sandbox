@@ -36,9 +36,8 @@ export default function Disability3DChart({ regions }: Props) {
       textStyle: { color: '#fff', fontSize: 13 }
     },
     xAxis3D: {
-      type: 'category',
-      data: regions.map(r => r.name),
-      name: 'Region',
+      type: 'value',
+      name: 'Region Index',
       nameTextStyle: { color: '#6b7280', fontSize: 14 }
     },
     yAxis3D: {
@@ -53,7 +52,7 @@ export default function Disability3DChart({ regions }: Props) {
     },
     grid3D: {
       boxWidth: 200,
-      boxDepth: 100,
+      boxDepth: 80,
       viewControl: {
         projection: 'perspective',
         autoRotate: false,
@@ -61,34 +60,40 @@ export default function Disability3DChart({ regions }: Props) {
         zoomSensitivity: 1,
         panSensitivity: 1,
         distance: 200
+      },
+      light: {
+        main: { intensity: 1.2, shadow: true },
+        ambient: { intensity: 0.3 }
       }
     },
     series: [{
       type: 'scatter3D',
-      data: regions.flatMap((r, i) => [
-        [i, r.disability.total.seeing / 1_000_000, 0, 'Seeing'],
-        [i, r.disability.total.hearing / 1_000_000, 1, 'Hearing'],
-        [i, r.disability.total.walking_climbing / 1_000_000, 2, 'Walking/Climbing'],
-        [i, r.disability.total.communication / 1_000_000, 3, 'Communication'],
-        [i, r.disability.total.memorization_focus / 1_000_000, 4, 'Memorization'],
-        [i, r.disability.total.self_care / 1_000_000, 5, 'Self Care']
+      data: regions.flatMap((r, regionIdx) => [
+        [regionIdx, r.disability.total.seeing / 1_000_000, 0],
+        [regionIdx, r.disability.total.hearing / 1_000_000, 1],
+        [regionIdx, r.disability.total.walking_climbing / 1_000_000, 2],
+        [regionIdx, r.disability.total.communication / 1_000_000, 3],
+        [regionIdx, r.disability.total.memorization_focus / 1_000_000, 4],
+        [regionIdx, r.disability.total.self_care / 1_000_000, 5]
       ]),
-      symbolSize: 25,
+      symbolSize: 20,
       itemStyle: {
-        color: '#3B82F6',
+        color: (params: any) => {
+          const colors = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
+          return colors[params.data[2] % colors.length];
+        },
         opacity: 0.8
       }
     }]
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-100">
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-200">
       <div className="mb-4">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Disability Analysis (3D)</h3>
-        <p className="text-gray-600">Three-dimensional scatter plot showing different disability types across regions.</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">3D Disability Analysis</h3>
+        <p className="text-gray-700">Interactive 3D scatter plot showing disability types across regions. Use mouse to rotate, zoom, and pan.</p>
       </div>
       <ReactECharts option={option} style={{ height: '700px', width: '100%' }} />
     </div>
   );
 }
-
