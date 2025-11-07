@@ -1,0 +1,132 @@
+'use client';
+
+import React from 'react';
+import ReactECharts from 'echarts-for-react';
+import { CensusRegion } from '@/lib/fetchCensusData';
+
+interface Props {
+  region: CensusRegion;
+}
+
+export default function GenderDistributionChart({ region }: Props) {
+  const total = region.demographics.male + region.demographics.female + region.demographics.transgender;
+  const malePercent = ((region.demographics.male / total) * 100).toFixed(1);
+  const femalePercent = ((region.demographics.female / total) * 100).toFixed(1);
+  const transPercent = ((region.demographics.transgender / total) * 100).toFixed(2);
+
+  const option = {
+    backgroundColor: 'transparent',
+    title: {
+      text: 'Gender Distribution',
+      subtext: region.name,
+      left: 'center',
+      textStyle: { fontSize: 22, fontWeight: 'bold', color: '#1f2937' },
+      subtextStyle: { fontSize: 16, color: '#6b7280' }
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: (params: any) => {
+        const value = params.value;
+        const percent = params.percent;
+        return `
+          <div style="padding: 8px;">
+            <strong>${params.name}</strong><br/>
+            Population: ${(value / 1_000_000).toFixed(2)}M<br/>
+            Percentage: ${percent}%
+          </div>
+        `;
+      },
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+      borderColor: '#3B82F6',
+      borderWidth: 2,
+      textStyle: { color: '#fff', fontSize: 13 }
+    },
+    legend: {
+      orient: 'vertical',
+      left: 'left',
+      top: 'middle',
+      textStyle: { fontSize: 14, fontWeight: '600', color: '#374151' },
+      itemGap: 20
+    },
+    series: [{
+      type: 'pie',
+      radius: ['45%', '75%'],
+      center: ['60%', '50%'],
+      avoidLabelOverlap: true,
+      itemStyle: {
+        borderRadius: 8,
+        borderColor: '#fff',
+        borderWidth: 3
+      },
+      label: {
+        show: true,
+        formatter: '{b}\n{d}%',
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#1f2937'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 18,
+          fontWeight: 'bold'
+        },
+        itemStyle: {
+          shadowBlur: 15,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      },
+      labelLine: {
+        show: true,
+        length: 15,
+        length2: 10
+      },
+      data: [
+        { 
+          value: region.demographics.male, 
+          name: 'Male',
+          itemStyle: { color: '#3B82F6' }
+        },
+        { 
+          value: region.demographics.female, 
+          name: 'Female',
+          itemStyle: { color: '#EC4899' }
+        },
+        { 
+          value: region.demographics.transgender, 
+          name: 'Transgender',
+          itemStyle: { color: '#8B5CF6' }
+        }
+      ]
+    }]
+  };
+
+  return (
+    <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl shadow-xl p-8 border-2 border-pink-200">
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">Gender Distribution</h3>
+        <p className="text-gray-700 mb-4">Breakdown of population by gender in {region.name}</p>
+        <div className="grid grid-cols-3 gap-4">
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <div className="text-sm text-gray-600 mb-1">Male</div>
+            <div className="text-2xl font-bold text-blue-600">{malePercent}%</div>
+            <div className="text-xs text-gray-500">{(region.demographics.male / 1_000_000).toFixed(2)}M</div>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <div className="text-sm text-gray-600 mb-1">Female</div>
+            <div className="text-2xl font-bold text-pink-600">{femalePercent}%</div>
+            <div className="text-xs text-gray-500">{(region.demographics.female / 1_000_000).toFixed(2)}M</div>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <div className="text-sm text-gray-600 mb-1">Transgender</div>
+            <div className="text-2xl font-bold text-purple-600">{transPercent}%</div>
+            <div className="text-xs text-gray-500">{(region.demographics.transgender / 1_000).toFixed(0)}K</div>
+          </div>
+        </div>
+      </div>
+      <ReactECharts option={option} style={{ height: '600px', width: '100%' }} />
+    </div>
+  );
+}
+

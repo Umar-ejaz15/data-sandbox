@@ -1,0 +1,102 @@
+'use client';
+
+import React from 'react';
+import ReactECharts from 'echarts-for-react';
+import 'echarts-gl';
+import { CensusRegion } from '@/lib/fetchCensusData';
+
+interface Props {
+  regions: CensusRegion[];
+}
+
+export default function Population3DChart({ regions }: Props) {
+  const option = {
+    backgroundColor: 'transparent',
+    title: {
+      text: 'Population Distribution by Region (3D)',
+      left: 'center',
+      textStyle: { fontSize: 22, fontWeight: 'bold', color: '#1f2937' },
+      subtext: 'Drag to rotate, scroll to zoom',
+      subtextStyle: { fontSize: 12, color: '#6b7280' }
+    },
+    tooltip: {
+      formatter: (params: any) => {
+        return `
+          <div style="padding: 8px;">
+            <strong>${regions[params.data[0]]?.name || 'Unknown'}</strong><br/>
+            Population: ${(params.data[1]).toFixed(2)}M<br/>
+            Area: ${(params.data[2]).toFixed(1)}K sq km
+          </div>
+        `;
+      },
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+      borderColor: '#3B82F6',
+      borderWidth: 2,
+      textStyle: { color: '#fff', fontSize: 13 }
+    },
+    xAxis3D: {
+      type: 'category',
+      data: regions.map(r => r.name),
+      name: 'Region',
+      nameTextStyle: { color: '#6b7280', fontSize: 14 }
+    },
+    yAxis3D: {
+      type: 'value',
+      name: 'Population (Millions)',
+      nameTextStyle: { color: '#6b7280', fontSize: 14 }
+    },
+    zAxis3D: {
+      type: 'value',
+      name: 'Area (sq km)',
+      nameTextStyle: { color: '#6b7280', fontSize: 14 }
+    },
+    grid3D: {
+      boxWidth: 200,
+      boxDepth: 80,
+      viewControl: {
+        projection: 'perspective',
+        autoRotate: false,
+        rotateSensitivity: 1,
+        zoomSensitivity: 1,
+        panSensitivity: 1,
+        distance: 200
+      },
+      light: {
+        main: { intensity: 1.2, shadow: true },
+        ambient: { intensity: 0.3 }
+      }
+    },
+    series: [{
+      type: 'bar3D',
+      data: regions.map((r, i) => [
+        i,
+        r.demographics.total_population / 1_000_000,
+        r.area_sq_km / 1000
+      ]),
+      shading: 'lambert',
+      itemStyle: {
+        color: (params: any) => {
+          const colors = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
+          return colors[params.dataIndex % colors.length];
+        },
+        opacity: 0.9
+      },
+      label: {
+        show: true,
+        formatter: (params: any) => regions[params.data[0]]?.name || '',
+        textStyle: { fontSize: 10, color: '#1f2937' }
+      }
+    }]
+  };
+
+  return (
+    <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-gray-100">
+      <div className="mb-4">
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">3D Population Visualization</h3>
+        <p className="text-gray-600">Interactive 3D bar chart showing population and area by region. Use mouse to rotate, zoom, and pan.</p>
+      </div>
+      <ReactECharts option={option} style={{ height: '700px', width: '100%' }} />
+    </div>
+  );
+}
+

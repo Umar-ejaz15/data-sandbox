@@ -1,403 +1,1091 @@
-[
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Pakistan",
-    "POPULATION-2023": "241499431",
-    "MALE": "122914000",
-    "FEMALE": "118585431",
-    "URBAN": "87200000",
-    "RURAL": "154299431",
-    "HOUSEHOLDS": "35500000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "796095",
-    "DENSITY": "303",
-    "SEX RATIO": "103.7",
-    "GROWTH RATE": "2.1",
-    "table_type": "table_1",
-    "region": "National",
-    "region_type": "country",
-    "level": "national",
-    "source_file": "table_1_national.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Punjab",
-    "POPULATION-2023": "127474000",
-    "MALE": "64800000",
-    "FEMALE": "62674000",
-    "URBAN": "45200000",
-    "RURAL": "82274000",
-    "HOUSEHOLDS": "18700000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "205344",
-    "DENSITY": "621",
-    "SEX RATIO": "103.4",
-    "GROWTH RATE": "2.0",
-    "table_type": "table_1",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "province",
-    "source_file": "table_1_punjab_province.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Sindh",
-    "POPULATION-2023": "55696000",
-    "MALE": "28400000",
-    "FEMALE": "27296000",
-    "URBAN": "25800000",
-    "RURAL": "29896000",
-    "HOUSEHOLDS": "8200000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "140914",
-    "DENSITY": "395",
-    "SEX RATIO": "104.0",
-    "GROWTH RATE": "2.2",
-    "table_type": "table_1",
-    "region": "Sindh",
-    "region_type": "province",
-    "level": "province",
-    "source_file": "table_1_sindh_province.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Khyber Pakhtunkhwa",
-    "POPULATION-2023": "40856097",
-    "MALE": "20800000",
-    "FEMALE": "20056097",
-    "URBAN": "9500000",
-    "RURAL": "31356097",
-    "HOUSEHOLDS": "6000000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "101741",
-    "DENSITY": "402",
-    "SEX RATIO": "103.7",
-    "GROWTH RATE": "2.1",
-    "table_type": "table_1",
-    "region": "Khyber Pakhtunkhwa",
-    "region_type": "province",
-    "level": "province",
-    "source_file": "table_1_kp_province.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Balochistan",
-    "POPULATION-2023": "21381000",
-    "MALE": "10900000",
-    "FEMALE": "10481000",
-    "URBAN": "3500000",
-    "RURAL": "17881000",
-    "HOUSEHOLDS": "3100000",
-    "AVG HOUSEHOLD SIZE": "6.9",
-    "AREA SQ.KM": "347190",
-    "DENSITY": "62",
-    "SEX RATIO": "104.0",
-    "GROWTH RATE": "2.3",
-    "table_type": "table_1",
-    "region": "Balochistan",
-    "region_type": "province",
-    "level": "province",
-    "source_file": "table_1_balochistan_province.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Islamabad",
-    "POPULATION-2023": "2363863",
-    "MALE": "1214000",
-    "FEMALE": "1149863",
-    "URBAN": "2100000",
-    "RURAL": "263863",
-    "HOUSEHOLDS": "350000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "906",
-    "DENSITY": "2609",
-    "SEX RATIO": "105.6",
-    "GROWTH RATE": "2.5",
-    "table_type": "table_1",
-    "region": "Islamabad",
-    "region_type": "capital",
-    "level": "province",
-    "source_file": "table_1_islamabad.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Lahore",
-    "POPULATION-2023": "13979000",
-    "MALE": "7100000",
-    "FEMALE": "6879000",
-    "URBAN": "13500000",
-    "RURAL": "479000",
-    "HOUSEHOLDS": "2050000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "1772",
-    "DENSITY": "7890",
-    "SEX RATIO": "103.2",
-    "GROWTH RATE": "2.1",
-    "table_type": "table_1",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_punjab_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Karachi",
-    "POPULATION-2023": "20382000",
-    "MALE": "10400000",
-    "FEMALE": "9982000",
-    "URBAN": "20000000",
-    "RURAL": "382000",
-    "HOUSEHOLDS": "3000000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "3527",
-    "DENSITY": "5779",
-    "SEX RATIO": "104.2",
-    "GROWTH RATE": "2.3",
-    "table_type": "table_1",
-    "region": "Sindh",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_sindh_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Faisalabad",
-    "POPULATION-2023": "7873910",
-    "MALE": "4000000",
-    "FEMALE": "3873910",
-    "URBAN": "6500000",
-    "RURAL": "1373910",
-    "HOUSEHOLDS": "1158000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "5856",
-    "DENSITY": "1344",
-    "SEX RATIO": "103.3",
-    "GROWTH RATE": "2.0",
-    "table_type": "table_1",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_punjab_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Rawalpindi",
-    "POPULATION-2023": "5405633",
-    "MALE": "2750000",
-    "FEMALE": "2655633",
-    "URBAN": "4200000",
-    "RURAL": "1205633",
-    "HOUSEHOLDS": "795000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "5286",
-    "DENSITY": "1023",
-    "SEX RATIO": "103.5",
-    "GROWTH RATE": "2.1",
-    "table_type": "table_1",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_punjab_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Multan",
-    "POPULATION-2023": "4745109",
-    "MALE": "2410000",
-    "FEMALE": "2335109",
-    "URBAN": "3800000",
-    "RURAL": "945109",
-    "HOUSEHOLDS": "698000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "3720",
-    "DENSITY": "1276",
-    "SEX RATIO": "103.2",
-    "GROWTH RATE": "2.0",
-    "table_type": "table_1",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_punjab_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Hyderabad",
-    "POPULATION-2023": "3429471",
-    "MALE": "1750000",
-    "FEMALE": "1679471",
-    "URBAN": "2800000",
-    "RURAL": "629471",
-    "HOUSEHOLDS": "504000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "5540",
-    "DENSITY": "619",
-    "SEX RATIO": "104.2",
-    "GROWTH RATE": "2.2",
-    "table_type": "table_1",
-    "region": "Sindh",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_sindh_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Peshawar",
-    "POPULATION-2023": "4269079",
-    "MALE": "2170000",
-    "FEMALE": "2099079",
-    "URBAN": "3200000",
-    "RURAL": "1069079",
-    "HOUSEHOLDS": "628000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "1257",
-    "DENSITY": "3396",
-    "SEX RATIO": "103.4",
-    "GROWTH RATE": "2.1",
-    "table_type": "table_1",
-    "region": "Khyber Pakhtunkhwa",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_kp_districts.pdf"
-  },
-  {
-    "NAME OF ADMINISTRATIVE UNIT": "Quetta",
-    "POPULATION-2023": "2275699",
-    "MALE": "1160000",
-    "FEMALE": "1115699",
-    "URBAN": "1800000",
-    "RURAL": "475699",
-    "HOUSEHOLDS": "335000",
-    "AVG HOUSEHOLD SIZE": "6.8",
-    "AREA SQ.KM": "2653",
-    "DENSITY": "858",
-    "SEX RATIO": "104.0",
-    "GROWTH RATE": "2.4",
-    "table_type": "table_1",
-    "region": "Balochistan",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_1_balochistan_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Karachi City",
-    "POPULATION": "16000000",
-    "MALE": "8160000",
-    "FEMALE": "7840000",
-    "POPULATION SIZE": "10,000,000+",
-    "GROWTH RATE": "2.3",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "2350000",
-    "table_type": "table_2",
-    "region": "Sindh",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_sindh_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Lahore City",
-    "POPULATION": "12000000",
-    "MALE": "6120000",
-    "FEMALE": "5880000",
-    "POPULATION SIZE": "5,000,000 - 10,000,000",
-    "GROWTH RATE": "2.1",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "1765000",
-    "table_type": "table_2",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_punjab_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Faisalabad City",
-    "POPULATION": "4500000",
-    "MALE": "2295000",
-    "FEMALE": "2205000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.0",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "662000",
-    "table_type": "table_2",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_punjab_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Rawalpindi City",
-    "POPULATION": "3500000",
-    "MALE": "1785000",
-    "FEMALE": "1715000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.1",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "515000",
-    "table_type": "table_2",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_punjab_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Multan City",
-    "POPULATION": "3200000",
-    "MALE": "1632000",
-    "FEMALE": "1568000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.0",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "471000",
-    "table_type": "table_2",
-    "region": "Punjab",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_punjab_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Hyderabad City",
-    "POPULATION": "2500000",
-    "MALE": "1275000",
-    "FEMALE": "1225000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.2",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "368000",
-    "table_type": "table_2",
-    "region": "Sindh",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_sindh_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Peshawar City",
-    "POPULATION": "2800000",
-    "MALE": "1428000",
-    "FEMALE": "1372000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.1",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "412000",
-    "table_type": "table_2",
-    "region": "Khyber Pakhtunkhwa",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_kp_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Quetta City",
-    "POPULATION": "1500000",
-    "MALE": "765000",
-    "FEMALE": "735000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.4",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "221000",
-    "table_type": "table_2",
-    "region": "Balochistan",
-    "region_type": "province",
-    "level": "district",
-    "source_file": "table_2_balochistan_districts.pdf"
-  },
-  {
-    "URBAN LOCALITY": "Islamabad City",
-    "POPULATION": "2100000",
-    "MALE": "1071000",
-    "FEMALE": "1029000",
-    "POPULATION SIZE": "1,000,000 - 5,000,000",
-    "GROWTH RATE": "2.5",
-    "HOUSEHOLD SIZE": "6.8",
-    "HOUSEHOLDS": "309000",
-    "table_type": "table_2",
-    "region": "Islamabad",
-    "region_type": "capital",
-    "level": "district",
-    "source_file": "table_2_islamabad.pdf"
+{
+  "census_year": 2023,
+  "country": "Pakistan",
+  "regions": [
+    {
+      "name": "Pakistan",
+      "area_sq_km": 796096,
+      "demographics": {
+        "total_population": 241499431,
+        "male": 124324406,
+        "female": 117154694,
+        "transgender": 20331,
+        "sex_ratio": 106.12,
+        "density_per_sq_km": 303.35,
+        "urban_proportion": 38.88,
+        "avg_household_size": 6.3,
+        "population_2017": 207684626,
+        "annual_growth_rate_2017_2023": 2.55,
+        "rural": {
+          "population": 147614729,
+          "male": 75592790,
+          "female": 72017097,
+          "transgender": 4842,
+          "sex_ratio": 104.97,
+          "avg_household_size": 6.3,
+          "population_2017": 132013789,
+          "annual_growth_rate": 1.88
+        },
+        "urban": {
+          "population": 93884702,
+          "male": 48731616,
+          "female": 45137597,
+          "transgender": 15489,
+          "sex_ratio": 107.96,
+          "avg_household_size": 6.2,
+          "population_2017": 75670837,
+          "annual_growth_rate": 3.67
+        }
+      },
+      "disability": {
+        "total": {
+          "population": 240458089,
+          "disability": 7448574,
+          "functional_limitation": 23170373,
+          "seeing": 4314433,
+          "hearing": 4778218,
+          "walking_climbing": 7493240,
+          "communication": 2584399,
+          "memorization_focus": 3538180,
+          "self_care": 2611695
+        },
+        "rural": {
+          "population": 147268383,
+          "disability": 4735395,
+          "functional_limitation": 13630475,
+          "seeing": 2561625,
+          "hearing": 2792025,
+          "walking_climbing": 4460283,
+          "communication": 1575812,
+          "memorization_focus": 2113305,
+          "self_care": 1517577
+        },
+        "urban": {
+          "population": 93189706,
+          "disability": 2713179,
+          "functional_limitation": 9539898,
+          "seeing": 1752808,
+          "hearing": 1986193,
+          "walking_climbing": 3032957,
+          "communication": 1008587,
+          "memorization_focus": 1424875,
+          "self_care": 1094118
+        }
+      },
+      "education": {
+        "total": {
+          "population_5_plus": 203986668,
+          "population_10_plus": 171714532,
+          "literate_10_plus": 104148094,
+          "literacy_rate": 60.65,
+          "ever_attended": 121170182,
+          "primary_completed": 15325376,
+          "enrolment_primary": 27604564,
+          "enrolment_middle": 11216458,
+          "enrolment_matric": 6011305,
+          "enrolment_intermediate": 3922407,
+          "enrolment_graduation_above": 4104277,
+          "never_to_school_all": 82816486,
+          "drop_out_5_16": 5339902,
+          "never_to_school_5_16": 20033448,
+          "out_of_school_5_16": 25373350
+        },
+        "rural": {
+          "population_5_plus": 123642945,
+          "population_10_plus": 102453550,
+          "literate_10_plus": 52829847,
+          "literacy_rate": 51.56,
+          "ever_attended": 63130728,
+          "primary_completed": 9361878,
+          "enrolment_primary": 16784465,
+          "enrolment_middle": 6311314,
+          "enrolment_matric": 3169567,
+          "enrolment_intermediate": 1849316,
+          "enrolment_graduation_above": 1617648,
+          "never_to_school_all": 60512217,
+          "drop_out_5_16": 3211215,
+          "never_to_school_5_16": 15618360,
+          "out_of_school_5_16": 18829575
+        },
+        "urban": {
+          "population_5_plus": 80343723,
+          "population_10_plus": 69260982,
+          "literate_10_plus": 51318247,
+          "literacy_rate": 74.09,
+          "ever_attended": 58039454,
+          "primary_completed": 5963498,
+          "enrolment_primary": 10820099,
+          "enrolment_middle": 4905144,
+          "enrolment_matric": 2841738,
+          "enrolment_intermediate": 2073091,
+          "enrolment_graduation_above": 2486629,
+          "never_to_school_all": 22304269,
+          "drop_out_5_16": 2128687,
+          "never_to_school_5_16": 4415088,
+          "out_of_school_5_16": 6543775
+        }
+      },
+      "housing": {
+        "total": {
+          "households": 38292556,
+          "pakka": 25833967,
+          "semi_pakka": 4815943,
+          "kacha": 7642646
+        },
+        "rural": {
+          "households": 23268867,
+          "pakka": 12725924,
+          "semi_pakka": 3809790,
+          "kacha": 6733153
+        },
+        "urban": {
+          "households": 15023689,
+          "pakka": 13108043,
+          "semi_pakka": 1006153,
+          "kacha": 909493
+        }
+      },
+      "structures": {
+        "total": {
+          "all_structures": 38318107,
+          "residential": 30434514,
+          "economic": 5151063,
+          "residential_economic": 1160304,
+          "high_rise": 73490,
+          "normal_structure": 7593,
+          "other": 33065,
+          "jughi_jhompri_tent_cave": 530918,
+          "under_construction": 927160
+        },
+        "rural": {
+          "all_structures": 24263721,
+          "residential": 19555922,
+          "economic": 3226675,
+          "residential_economic": 505591,
+          "high_rise": 5482,
+          "normal_structure": 1202,
+          "other": 2693,
+          "jughi_jhompri_tent_cave": 441705,
+          "under_construction": 524451
+        },
+        "urban": {
+          "all_structures": 14054386,
+          "residential": 10878592,
+          "economic": 1924388,
+          "residential_economic": 654713,
+          "high_rise": 68008,
+          "normal_structure": 6391,
+          "other": 30372,
+          "jughi_jhompri_tent_cave": 89213,
+          "under_construction": 402709
+        }
+      }
+    },
+    {
+      "name": "Khyber Pakhtunkhwa",
+      "area_sq_km": 101741,
+      "demographics": {
+        "total_population": 40856097,
+        "male": 20845747,
+        "female": 20009233,
+        "transgender": 1117,
+        "sex_ratio": 104.18,
+        "density_per_sq_km": 401.57,
+        "urban_proportion": 15.01,
+        "avg_household_size": 6.9,
+        "population_2017": 35501964,
+        "annual_growth_rate_2017_2023": 2.38,
+        "rural": {
+          "population": 34724801,
+          "male": 17685692,
+          "female": 17038648,
+          "transgender": 461,
+          "sex_ratio": 103.8,
+          "avg_household_size": 6.9,
+          "population_2017": 29626670,
+          "annual_growth_rate": 2.69
+        },
+        "urban": {
+          "population": 6131296,
+          "male": 3160055,
+          "female": 2970585,
+          "transgender": 656,
+          "sex_ratio": 106.38,
+          "avg_household_size": 6.7,
+          "population_2017": 5875294,
+          "annual_growth_rate": 0.72
+        }
+      },
+      "disability": {
+        "total": {
+          "population": 40641120,
+          "disability": 1285273,
+          "functional_limitation": 3406060,
+          "seeing": 657696,
+          "hearing": 687790,
+          "walking_climbing": 1170285,
+          "communication": 421225,
+          "memorization_focus": 562712,
+          "self_care": 361553
+        },
+        "rural": {
+          "population": 34554415,
+          "disability": 1116070,
+          "functional_limitation": 2881800,
+          "seeing": 559119,
+          "hearing": 581331,
+          "walking_climbing": 992567,
+          "communication": 360391,
+          "memorization_focus": 477520,
+          "self_care": 304549
+        },
+        "urban": {
+          "population": 6086705,
+          "disability": 169203,
+          "functional_limitation": 524260,
+          "seeing": 98577,
+          "hearing": 106459,
+          "walking_climbing": 177718,
+          "communication": 60834,
+          "memorization_focus": 85192,
+          "self_care": 57004
+        }
+      },
+      "education": {
+        "total": {
+          "population_5_plus": 34293340,
+          "population_10_plus": 28225473,
+          "literate_10_plus": 14420285,
+          "literacy_rate": 51.09,
+          "ever_attended": 17694159,
+          "primary_completed": 1754916,
+          "enrolment_primary": 4945712,
+          "enrolment_middle": 2042544,
+          "enrolment_matric": 1010226,
+          "enrolment_intermediate": 690285,
+          "enrolment_graduation_above": 698929,
+          "never_to_school_all": 16599181,
+          "drop_out_5_16": 664800,
+          "never_to_school_5_16": 4259321,
+          "out_of_school_5_16": 4924121
+        },
+        "rural": {
+          "population_5_plus": 29013605,
+          "population_10_plus": 23733785,
+          "literate_10_plus": 11475874,
+          "literacy_rate": 48.35,
+          "ever_attended": 14260660,
+          "primary_completed": 1474617,
+          "enrolment_primary": 4162761,
+          "enrolment_middle": 1681154,
+          "enrolment_matric": 819976,
+          "enrolment_intermediate": 546026,
+          "enrolment_graduation_above": 507623,
+          "never_to_school_all": 14752945,
+          "drop_out_5_16": 566373,
+          "never_to_school_5_16": 3917604,
+          "out_of_school_5_16": 4483977
+        },
+        "urban": {
+          "population_5_plus": 5279735,
+          "population_10_plus": 4491688,
+          "literate_10_plus": 2944411,
+          "literacy_rate": 65.55,
+          "ever_attended": 3433499,
+          "primary_completed": 280299,
+          "enrolment_primary": 782951,
+          "enrolment_middle": 361390,
+          "enrolment_matric": 190250,
+          "enrolment_intermediate": 144259,
+          "enrolment_graduation_above": 191306,
+          "never_to_school_all": 1846236,
+          "drop_out_5_16": 98427,
+          "never_to_school_5_16": 341717,
+          "out_of_school_5_16": 440144
+        }
+      },
+      "housing": {
+        "total": {
+          "households": 5861457,
+          "pakka": 3257498,
+          "semi_pakka": 1147514,
+          "kacha": 1456445
+        },
+        "rural": {
+          "households": 4948708,
+          "pakka": 2491672,
+          "semi_pakka": 1072363,
+          "kacha": 1384673
+        },
+        "urban": {
+          "households": 912749,
+          "pakka": 765826,
+          "semi_pakka": 75151,
+          "kacha": 71772
+        }
+      },
+      "structures": {
+        "total": {
+          "all_structures": 5746412,
+          "residential": 4689072,
+          "economic": 756175,
+          "residential_economic": 96991,
+          "high_rise": 3391,
+          "normal_structure": 1191,
+          "other": 1317,
+          "jughi_jhompri_tent_cave": 11477,
+          "under_construction": 186798
+        },
+        "rural": {
+          "all_structures": 4806420,
+          "residential": 3957410,
+          "economic": 610853,
+          "residential_economic": 69270,
+          "high_rise": 1485,
+          "normal_structure": 328,
+          "other": 500,
+          "jughi_jhompri_tent_cave": 10637,
+          "under_construction": 155937
+        },
+        "urban": {
+          "all_structures": 939992,
+          "residential": 731662,
+          "economic": 145322,
+          "residential_economic": 27721,
+          "high_rise": 1906,
+          "normal_structure": 863,
+          "other": 817,
+          "jughi_jhompri_tent_cave": 840,
+          "under_construction": 30861
+        }
+      }
+    },
+    {
+      "name": "Punjab",
+      "area_sq_km": 205345,
+      "demographics": {
+        "total_population": 127688922,
+        "male": 65448376,
+        "female": 62226589,
+        "transgender": 13957,
+        "sex_ratio": 105.18,
+        "density_per_sq_km": 621.83,
+        "urban_proportion": 40.71,
+        "avg_household_size": 6.4,
+        "population_2017": 109989655,
+        "annual_growth_rate_2017_2023": 2.53,
+        "rural": {
+          "population": 75712955,
+          "male": 38625841,
+          "female": 37083868,
+          "transgender": 3246,
+          "sex_ratio": 104.16,
+          "avg_household_size": 6.4,
+          "population_2017": 69442450,
+          "annual_growth_rate": 1.46
+        },
+        "urban": {
+          "population": 51975967,
+          "male": 26822535,
+          "female": 25142721,
+          "transgender": 10711,
+          "sex_ratio": 106.68,
+          "avg_household_size": 6.3,
+          "population_2017": 40547205,
+          "annual_growth_rate": 4.24
+        }
+      },
+      "disability": {
+        "total": {
+          "population": 127333305,
+          "disability": 4487038,
+          "functional_limitation": 13507697,
+          "seeing": 2463045,
+          "hearing": 2759390,
+          "walking_climbing": 4337871,
+          "communication": 1511716,
+          "memorization_focus": 2037298,
+          "self_care": 1548468
+        },
+        "rural": {
+          "population": 75620438,
+          "disability": 2787830,
+          "functional_limitation": 8068689,
+          "seeing": 1485931,
+          "hearing": 1648719,
+          "walking_climbing": 2599348,
+          "communication": 925230,
+          "memorization_focus": 1230806,
+          "self_care": 914429
+        },
+        "urban": {
+          "population": 51712867,
+          "disability": 1699208,
+          "functional_limitation": 5439008,
+          "seeing": 977114,
+          "hearing": 1110671,
+          "walking_climbing": 1738523,
+          "communication": 586486,
+          "memorization_focus": 806492,
+          "self_care": 634039
+        }
+      },
+      "education": {
+        "total": {
+          "population_5_plus": 109023334,
+          "population_10_plus": 93413721,
+          "literate_10_plus": 61882702,
+          "literacy_rate": 66.25,
+          "ever_attended": 72288658,
+          "primary_completed": 9987172,
+          "enrolment_primary": 15282432,
+          "enrolment_middle": 6481465,
+          "enrolment_matric": 3725090,
+          "enrolment_intermediate": 2222542,
+          "enrolment_graduation_above": 2290076,
+          "never_to_school_all": 36734676,
+          "drop_out_5_16": 3156970,
+          "never_to_school_5_16": 6443194,
+          "out_of_school_5_16": 9600164
+        },
+        "rural": {
+          "population_5_plus": 64322675,
+          "population_10_plus": 54535849,
+          "literate_10_plus": 31830426,
+          "literacy_rate": 58.37,
+          "ever_attended": 38071447,
+          "primary_completed": 6143942,
+          "enrolment_primary": 9175687,
+          "enrolment_middle": 3616811,
+          "enrolment_matric": 1943789,
+          "enrolment_intermediate": 1004654,
+          "enrolment_graduation_above": 834673,
+          "never_to_school_all": 26251228,
+          "drop_out_5_16": 1972333,
+          "never_to_school_5_16": 4893718,
+          "out_of_school_5_16": 6866051
+        },
+        "urban": {
+          "population_5_plus": 44700659,
+          "population_10_plus": 38877872,
+          "literate_10_plus": 30052276,
+          "literacy_rate": 77.3,
+          "ever_attended": 34217211,
+          "primary_completed": 3843230,
+          "enrolment_primary": 6106745,
+          "enrolment_middle": 2864654,
+          "enrolment_matric": 1781301,
+          "enrolment_intermediate": 1217888,
+          "enrolment_graduation_above": 1455403,
+          "never_to_school_all": 10483448,
+          "drop_out_5_16": 1184637,
+          "never_to_school_5_16": 1549476,
+          "out_of_school_5_16": 2734113
+        }
+      },
+      "housing": {
+        "total": {
+          "households": 19839980,
+          "pakka": 16031117,
+          "semi_pakka": 2367840,
+          "kacha": 1441023
+        },
+        "rural": {
+          "households": 11712312,
+          "pakka": 8549032,
+          "semi_pakka": 1921679,
+          "kacha": 1241601
+        },
+        "urban": {
+          "households": 8127668,
+          "pakka": 7482085,
+          "semi_pakka": 446161,
+          "kacha": 199422
+        }
+      },
+      "structures": {
+        "total": {
+          "all_structures": 22119690,
+          "residential": 17379863,
+          "economic": 3270252,
+          "residential_economic": 810060,
+          "high_rise": 18136,
+          "normal_structure": 3533,
+          "other": 5109,
+          "jughi_jhompri_tent_cave": 104267,
+          "under_construction": 528470
+        },
+        "rural": {
+          "all_structures": 13383270,
+          "residential": 10613868,
+          "economic": 2049762,
+          "residential_economic": 378070,
+          "high_rise": 2153,
+          "normal_structure": 269,
+          "other": 757,
+          "jughi_jhompri_tent_cave": 68836,
+          "under_construction": 269555
+        },
+        "urban": {
+          "all_structures": 8736420,
+          "residential": 6765995,
+          "economic": 1220490,
+          "residential_economic": 431990,
+          "high_rise": 15983,
+          "normal_structure": 3264,
+          "other": 4352,
+          "jughi_jhompri_tent_cave": 35431,
+          "under_construction": 258915
+        }
+      }
+    },
+    {
+      "name": "Sindh",
+      "area_sq_km": 140914,
+      "demographics": {
+        "total_population": 55696147,
+        "male": 29014424,
+        "female": 26677501,
+        "transgender": 4222,
+        "sex_ratio": 108.76,
+        "density_per_sq_km": 395.25,
+        "urban_proportion": 53.97,
+        "avg_household_size": 5.6,
+        "population_2017": 47854510,
+        "annual_growth_rate_2017_2023": 2.57,
+        "rural": {
+          "population": 25639408,
+          "male": 13245373,
+          "female": 12393405,
+          "transgender": 630,
+          "sex_ratio": 106.87,
+          "avg_household_size": 5.4,
+          "population_2017": 23021876,
+          "annual_growth_rate": 1.82
+        },
+        "urban": {
+          "population": 30056739,
+          "male": 15769051,
+          "female": 14284096,
+          "transgender": 3592,
+          "sex_ratio": 110.4,
+          "avg_household_size": 5.8,
+          "population_2017": 24832634,
+          "annual_growth_rate": 3.24
+        }
+      },
+      "disability": {
+        "total": {
+          "population": 55638409,
+          "disability": 1297882,
+          "functional_limitation": 5139958,
+          "seeing": 982093,
+          "hearing": 1103983,
+          "walking_climbing": 1621277,
+          "communication": 534995,
+          "memorization_focus": 774154,
+          "self_care": 572877
+        },
+        "rural": {
+          "population": 25623864,
+          "disability": 564402,
+          "functional_limitation": 1941313,
+          "seeing": 374644,
+          "hearing": 412609,
+          "walking_climbing": 628210,
+          "communication": 212044,
+          "memorization_focus": 296183,
+          "self_care": 213247
+        },
+        "urban": {
+          "population": 30014545,
+          "disability": 733480,
+          "functional_limitation": 3198645,
+          "seeing": 607449,
+          "hearing": 691374,
+          "walking_climbing": 993067,
+          "communication": 322951,
+          "memorization_focus": 477971,
+          "self_care": 359630
+        }
+      },
+      "education": {
+        "total": {
+          "population_5_plus": 46910732,
+          "population_10_plus": 38984258,
+          "literate_10_plus": 22431392,
+          "literacy_rate": 57.54,
+          "ever_attended": 25020290,
+          "primary_completed": 2998234,
+          "enrolment_primary": 5696264,
+          "enrolment_middle": 2102706,
+          "enrolment_matric": 1001686,
+          "enrolment_intermediate": 804661,
+          "enrolment_graduation_above": 889565,
+          "never_to_school_all": 21890442,
+          "drop_out_5_16": 1201900,
+          "never_to_school_5_16": 6616348,
+          "out_of_school_5_16": 7818248
+        },
+        "rural": {
+          "population_5_plus": 21038287,
+          "population_10_plus": 16818012,
+          "literate_10_plus": 6414439,
+          "literacy_rate": 38.14,
+          "ever_attended": 7240844,
+          "primary_completed": 1376468,
+          "enrolment_primary": 2377638,
+          "enrolment_middle": 671065,
+          "enrolment_matric": 257875,
+          "enrolment_intermediate": 193737,
+          "enrolment_graduation_above": 172886,
+          "never_to_school_all": 13797443,
+          "drop_out_5_16": 467095,
+          "never_to_school_5_16": 4650069,
+          "out_of_school_5_16": 5117164
+        },
+        "urban": {
+          "population_5_plus": 25872445,
+          "population_10_plus": 22166246,
+          "literate_10_plus": 16016953,
+          "literacy_rate": 72.26,
+          "ever_attended": 17779446,
+          "primary_completed": 1621766,
+          "enrolment_primary": 3318626,
+          "enrolment_middle": 1431641,
+          "enrolment_matric": 743811,
+          "enrolment_intermediate": 610924,
+          "enrolment_graduation_above": 716679,
+          "never_to_school_all": 8092999,
+          "drop_out_5_16": 734805,
+          "never_to_school_5_16": 1966279,
+          "out_of_school_5_16": 2701084
+        }
+      },
+      "housing": {
+        "total": {
+          "households": 9862870,
+          "pakka": 5690125,
+          "semi_pakka": 906820,
+          "kacha": 3265925
+        },
+        "rural": {
+          "households": 4718683,
+          "pakka": 1285718,
+          "semi_pakka": 553971,
+          "kacha": 2878994
+        },
+        "urban": {
+          "households": 5144187,
+          "pakka": 4404407,
+          "semi_pakka": 352849,
+          "kacha": 386931
+        }
+      },
+      "structures": {
+        "total": {
+          "all_structures": 7730239,
+          "residential": 6163126,
+          "economic": 825884,
+          "residential_economic": 215689,
+          "high_rise": 48389,
+          "normal_structure": 1815,
+          "other": 24678,
+          "jughi_jhompri_tent_cave": 313738,
+          "under_construction": 136920
+        },
+        "rural": {
+          "all_structures": 4192513,
+          "residential": 3420253,
+          "economic": 412143,
+          "residential_economic": 36220,
+          "high_rise": 1350,
+          "normal_structure": 112,
+          "other": 381,
+          "jughi_jhompri_tent_cave": 268371,
+          "under_construction": 53683
+        },
+        "urban": {
+          "all_structures": 3537726,
+          "residential": 2742873,
+          "economic": 413741,
+          "residential_economic": 179469,
+          "high_rise": 47039,
+          "normal_structure": 1703,
+          "other": 24297,
+          "jughi_jhompri_tent_cave": 45367,
+          "under_construction": 83237
+        }
+      }
+    },
+    {
+      "name": "Balochistan",
+      "area_sq_km": 347190,
+      "demographics": {
+        "total_population": 14894402,
+        "male": 7768166,
+        "female": 7125471,
+        "transgender": 765,
+        "sex_ratio": 109.02,
+        "density_per_sq_km": 42.9,
+        "urban_proportion": 30.96,
+        "avg_household_size": 6.4,
+        "population_2017": 12335129,
+        "annual_growth_rate_2017_2023": 3.2,
+        "rural": {
+          "population": 10282574,
+          "male": 5379780,
+          "female": 4902339,
+          "transgender": 455,
+          "sex_ratio": 109.74,
+          "avg_household_size": 6.1,
+          "population_2017": 8928428,
+          "annual_growth_rate": 2.39
+        },
+        "urban": {
+          "population": 4611828,
+          "male": 2388386,
+          "female": 2223132,
+          "transgender": 310,
+          "sex_ratio": 107.43,
+          "avg_household_size": 7.0,
+          "population_2017": 3406701,
+          "annual_growth_rate": 5.19
+        }
+      },
+      "disability": {
+        "total": {
+          "population": 14562011,
+          "disability": 305359,
+          "functional_limitation": 931278,
+          "seeing": 177830,
+          "hearing": 189474,
+          "walking_climbing": 302173,
+          "communication": 93982,
+          "memorization_focus": 134548,
+          "self_care": 106461
+        },
+        "rural": {
+          "population": 10229422,
+          "disability": 222687,
+          "functional_limitation": 633672,
+          "seeing": 123058,
+          "hearing": 128505,
+          "walking_climbing": 204980,
+          "communication": 65227,
+          "memorization_focus": 91821,
+          "self_care": 72309
+        },
+        "urban": {
+          "population": 4332589,
+          "disability": 82672,
+          "functional_limitation": 297606,
+          "seeing": 54772,
+          "hearing": 60969,
+          "walking_climbing": 97193,
+          "communication": 28755,
+          "memorization_focus": 42727,
+          "self_care": 34152
+        }
+      },
+      "education": {
+        "total": {
+          "population_5_plus": 11713500,
+          "population_10_plus": 9294080,
+          "literate_10_plus": 3904799,
+          "literacy_rate": 42.01,
+          "ever_attended": 4458117,
+          "primary_completed": 440083,
+          "enrolment_primary": 1404729,
+          "enrolment_middle": 460505,
+          "enrolment_matric": 194660,
+          "enrolment_intermediate": 144171,
+          "enrolment_graduation_above": 131590,
+          "never_to_school_all": 7255383,
+          "drop_out_5_16": 267582,
+          "never_to_school_5_16": 2674108,
+          "out_of_school_5_16": 2941690
+        },
+        "rural": {
+          "population_5_plus": 8162308,
+          "population_10_plus": 6396165,
+          "literate_10_plus": 2286037,
+          "literacy_rate": 35.74,
+          "ever_attended": 2621982,
+          "primary_completed": 283619,
+          "enrolment_primary": 915817,
+          "enrolment_middle": 270354,
+          "enrolment_matric": 103382,
+          "enrolment_intermediate": 71649,
+          "enrolment_graduation_above": 56308,
+          "never_to_school_all": 5540326,
+          "drop_out_5_16": 180294,
+          "never_to_school_5_16": 2138417,
+          "out_of_school_5_16": 2318711
+        },
+        "urban": {
+          "population_5_plus": 3551192,
+          "population_10_plus": 2897915,
+          "literate_10_plus": 1618762,
+          "literacy_rate": 55.86,
+          "ever_attended": 1836135,
+          "primary_completed": 156464,
+          "enrolment_primary": 488912,
+          "enrolment_middle": 190151,
+          "enrolment_matric": 91278,
+          "enrolment_intermediate": 72522,
+          "enrolment_graduation_above": 75282,
+          "never_to_school_all": 1715057,
+          "drop_out_5_16": 87288,
+          "never_to_school_5_16": 535691,
+          "out_of_school_5_16": 622979
+        }
+      },
+      "housing": {
+        "total": {
+          "households": 2317256,
+          "pakka": 455128,
+          "semi_pakka": 388785,
+          "kacha": 1473343
+        },
+        "rural": {
+          "households": 1663142,
+          "pakka": 177136,
+          "semi_pakka": 259717,
+          "kacha": 1226289
+        },
+        "urban": {
+          "households": 654114,
+          "pakka": 277992,
+          "semi_pakka": 129068,
+          "kacha": 247054
+        }
+      },
+      "structures": {
+        "total": {
+          "all_structures": 2304869,
+          "residential": 1864928,
+          "economic": 267313,
+          "residential_economic": 23950,
+          "high_rise": 1437,
+          "normal_structure": 259,
+          "other": 637,
+          "jughi_jhompri_tent_cave": 98723,
+          "under_construction": 47622
+        },
+        "rural": {
+          "all_structures": 1636399,
+          "residential": 1366383,
+          "economic": 136363,
+          "residential_economic": 13524,
+          "high_rise": 190,
+          "normal_structure": 41,
+          "other": 82,
+          "jughi_jhompri_tent_cave": 92798,
+          "under_construction": 27018
+        },
+        "urban": {
+          "all_structures": 668470,
+          "residential": 498545,
+          "economic": 130950,
+          "residential_economic": 10426,
+          "high_rise": 1247,
+          "normal_structure": 218,
+          "other": 555,
+          "jughi_jhompri_tent_cave": 5925,
+          "under_construction": 20604
+        }
+      }
+    },
+    {
+      "name": "Islamabad Capital Territory",
+      "area_sq_km": 906,
+      "demographics": {
+        "total_population": 2363863,
+        "male": 1247693,
+        "female": 1115900,
+        "transgender": 270,
+        "sex_ratio": 111.81,
+        "density_per_sq_km": 2609.12,
+        "urban_proportion": 46.91,
+        "avg_household_size": 5.7,
+        "population_2017": 2003368,
+        "annual_growth_rate_2017_2023": 2.8,
+        "rural": {
+          "population": 1254991,
+          "male": 656104,
+          "female": 598837,
+          "transgender": 50,
+          "sex_ratio": 109.56,
+          "avg_household_size": 5.5,
+          "population_2017": 994365,
+          "annual_growth_rate": 3.97
+        },
+        "urban": {
+          "population": 1108872,
+          "male": 591589,
+          "female": 517063,
+          "transgender": 220,
+          "sex_ratio": 114.41,
+          "avg_household_size": 5.9,
+          "population_2017": 1009003,
+          "annual_growth_rate": 1.59
+        }
+      },
+      "disability": {
+        "total": {
+          "population": 2283244,
+          "disability": 73022,
+          "functional_limitation": 185380,
+          "seeing": 33769,
+          "hearing": 37581,
+          "walking_climbing": 61634,
+          "communication": 22481,
+          "memorization_focus": 29468,
+          "self_care": 22336
+        },
+        "rural": {
+          "population": 1240244,
+          "disability": 44406,
+          "functional_limitation": 105001,
+          "seeing": 18873,
+          "hearing": 20861,
+          "walking_climbing": 35178,
+          "communication": 12920,
+          "memorization_focus": 16975,
+          "self_care": 13043
+        },
+        "urban": {
+          "population": 1043000,
+          "disability": 28616,
+          "functional_limitation": 80379,
+          "seeing": 14896,
+          "hearing": 16720,
+          "walking_climbing": 26456,
+          "communication": 9561,
+          "memorization_focus": 12493,
+          "self_care": 9293
+        }
+      },
+      "education": {
+        "total": {
+          "population_5_plus": 2045762,
+          "population_10_plus": 1797000,
+          "literate_10_plus": 1508916,
+          "literacy_rate": 83.97,
+          "ever_attended": 1708958,
+          "primary_completed": 144971,
+          "enrolment_primary": 275427,
+          "enrolment_middle": 129238,
+          "enrolment_matric": 79643,
+          "enrolment_intermediate": 60748,
+          "enrolment_graduation_above": 94117,
+          "never_to_school_all": 336804,
+          "drop_out_5_16": 48650,
+          "never_to_school_5_16": 40477,
+          "out_of_school_5_16": 89127
+        },
+        "rural": {
+          "population_5_plus": 1106070,
+          "population_10_plus": 969739,
+          "literate_10_plus": 823071,
+          "literacy_rate": 84.88,
+          "ever_attended": 935795,
+          "primary_completed": 83232,
+          "enrolment_primary": 152562,
+          "enrolment_middle": 71930,
+          "enrolment_matric": 44545,
+          "enrolment_intermediate": 33250,
+          "enrolment_graduation_above": 46158,
+          "never_to_school_all": 170275,
+          "drop_out_5_16": 25120,
+          "never_to_school_5_16": 18552,
+          "out_of_school_5_16": 43672
+        },
+        "urban": {
+          "population_5_plus": 939692,
+          "population_10_plus": 827261,
+          "literate_10_plus": 685845,
+          "literacy_rate": 82.91,
+          "ever_attended": 773163,
+          "primary_completed": 61739,
+          "enrolment_primary": 122865,
+          "enrolment_middle": 57308,
+          "enrolment_matric": 35098,
+          "enrolment_intermediate": 27498,
+          "enrolment_graduation_above": 47959,
+          "never_to_school_all": 166529,
+          "drop_out_5_16": 23530,
+          "never_to_school_5_16": 21925,
+          "out_of_school_5_16": 45455
+        }
+      },
+      "housing": {
+        "total": {
+          "households": 410993,
+          "pakka": 400099,
+          "semi_pakka": 4984,
+          "kacha": 5910
+        },
+        "rural": {
+          "households": 226022,
+          "pakka": 222366,
+          "semi_pakka": 2060,
+          "kacha": 1596
+        },
+        "urban": {
+          "households": 184971,
+          "pakka": 177733,
+          "semi_pakka": 2924,
+          "kacha": 4314
+        }
+      },
+      "structures": {
+        "total": {
+          "all_structures": 416897,
+          "residential": 337525,
+          "economic": 31439,
+          "residential_economic": 13614,
+          "high_rise": 2137,
+          "normal_structure": 795,
+          "other": 1324,
+          "jughi_jhompri_tent_cave": 2713,
+          "under_construction": 27350
+        },
+        "rural": {
+          "all_structures": 245119,
+          "residential": 198008,
+          "economic": 17554,
+          "residential_economic": 8507,
+          "high_rise": 304,
+          "normal_structure": 452,
+          "other": 973,
+          "jughi_jhompri_tent_cave": 1063,
+          "under_construction": 18258
+        },
+        "urban": {
+          "all_structures": 171778,
+          "residential": 139517,
+          "economic": 13885,
+          "residential_economic": 5107,
+          "high_rise": 1833,
+          "normal_structure": 343,
+          "other": 351,
+          "jughi_jhompri_tent_cave": 1650,
+          "under_construction": 9092
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "source": "Pakistan Census 2023",
+    "tables_included": [
+      "Table 1: Area, Population by Sex, Sex Ratio, Population Density, Urban Population, Household Size and Annual Growth Rate",
+      "Table 12: Literacy Rate, Enrolment and Out of School Population by Sex and Rural/Urban",
+      "Table 16: Disability and Functional Limitation by Region and Gender",
+      "Table 20: Type of Housing Unit by Region",
+      "Table 26: Total Number of Structure by Types and Rural/Urban"
+    ],
+    "note": "Data represents complete demographic, education, disability, housing and structure statistics for Pakistan and its administrative regions"
   }
-]
+}

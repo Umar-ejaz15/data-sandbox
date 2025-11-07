@@ -1,23 +1,31 @@
-# Enhanced PDF extraction script for Table-1 and Table-2 at all levels
+# Enhanced PDF extraction script for PBS Tables 1–11 at all levels
 import pdfplumber
 import pandas as pd
 import glob
 import json
 import os
+import re
 from pathlib import Path
 
 # Get the script directory and find PDFs
 script_dir = Path(__file__).parent
-table1_pdfs = glob.glob(str(script_dir / "table_1*.pdf"))
-table2_pdfs = glob.glob(str(script_dir / "table_2*.pdf"))
 
-all_pdfs = table1_pdfs + table2_pdfs
+# Collect PDFs for table_1 ... table_11 (handle case variations and hyphen/underscore)
+pdf_patterns = [
+    str(script_dir / f"table_{i}*.pdf") for i in range(1, 12)
+]
+pdf_patterns += [
+    str(script_dir / f"Table_{i}*.pdf") for i in range(1, 12)
+]
+all_pdfs = []
+for pattern in pdf_patterns:
+    all_pdfs.extend(glob.glob(pattern))
 
 if not all_pdfs:
     print("No PDF files found in scripts directory")
     exit(1)
 
-print(f"Found {len(all_pdfs)} PDF files ({len(table1_pdfs)} Table-1, {len(table2_pdfs)} Table-2)")
+print(f"Found {len(all_pdfs)} PDF files for Tables 1–11")
 
 all_data = []
 
@@ -27,11 +35,14 @@ for pdf in all_pdfs:
         # Determine table type, region, and level from filename
         filename = os.path.basename(pdf).lower()
         
-        # Determine table type
-        if "table_1" in filename or "table-1" in filename:
-            table_type = "table_1"
-        elif "table_2" in filename or "table-2" in filename:
-            table_type = "table_2"
+        # Determine table type dynamically (supports table_1 .. table_11)
+        m = re.search(r"table[-_]?([0-9]{1,2})", filename)
+        if m:
+            table_num = int(m.group(1))
+            if 1 <= table_num <= 11:
+                table_type = f"table_{table_num}"
+            else:
+                table_type = "unknown"
         else:
             table_type = "unknown"
         
@@ -88,7 +99,7 @@ for pdf in all_pdfs:
                 if not table or len(table) < 2:
                     continue
                 
-                # First row as headers
+                # First row as headers (do not include in data rows)
                 headers = [str(cell).strip() if cell else f"col_{i}" 
                           for i, cell in enumerate(table[0])]
                 
@@ -125,17 +136,49 @@ for pdf in all_pdfs:
         traceback.print_exc()
         continue
 
-# Save to JSON
-output_path = script_dir.parent / "public" / "data" / "population_2023.json"
-output_path.parent.mkdir(parents=True, exist_ok=True)
+# Save outputs
+data_dir = script_dir.parent / "public" / "data"
+data_dir.mkdir(parents=True, exist_ok=True)
 
-with open(output_path, 'w', encoding='utf-8') as f:
+# 1) Combined dataset for all tables
+combined_path = data_dir / "census_tables.json"
+with open(combined_path, 'w', encoding='utf-8') as f:
     json.dump(all_data, f, indent=2, ensure_ascii=False, default=str)
 
-print(f"Extracted {len(all_data)} records")
-print(f"Data saved to {output_path}")
+# 2) Per-table datasets (table_1.json ... table_11.json)
+for t in range(1, 12):
+    t_key = f"table_{t}"
+    subset = [r for r in all_data if r.get('table_type') == t_key]
+    out = data_dir / f"{t_key}.json"
+    with open(out, 'w', encoding='utf-8') as f:
+        json.dump(subset, f, indent=2, ensure_ascii=False, default=str)
 
-# Print summary
-table1_count = sum(1 for r in all_data if r.get('table_type') == 'table_1')
-table2_count = sum(1 for r in all_data if r.get('table_type') == 'table_2')
-print(f"Summary: {table1_count} Table-1 records, {table2_count} Table-2 records")
+# 3) Backward-compatible file for existing frontend (Table-1 and Table-2 only)
+backcompat = [r for r in all_data if r.get('table_type') in ("table_1", "table_2")]
+backcompat_path = data_dir / "population_2023.json"
+with open(backcompat_path, 'w', encoding='utf-8') as f:
+    json.dump(backcompat, f, indent=2, ensure_ascii=False, default=str)
+
+# 4) Optional per-level splits per table
+for t in range(1, 12):
+    t_key = f"table_{t}"
+    subset = [r for r in all_data if r.get('table_type') == t_key]
+    if not subset:
+        continue
+    for lvl in ("national", "province", "district"):
+        lvl_subset = [r for r in subset if r.get('level') == lvl]
+        if lvl_subset:
+            out = data_dir / f"{t_key}_{lvl}.json"
+            with open(out, 'w', encoding='utf-8') as f:
+                json.dump(lvl_subset, f, indent=2, ensure_ascii=False, default=str)
+
+print(f"Extracted {len(all_data)} records")
+print(f"Saved combined to {combined_path}")
+print(f"Saved per-table JSONs and level splits under {data_dir}")
+
+# Print summary counts
+summary = {}
+for r in all_data:
+    t = r.get('table_type') or 'unknown'
+    summary[t] = summary.get(t, 0) + 1
+print("Summary counts by table:", summary)

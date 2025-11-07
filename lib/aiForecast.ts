@@ -102,11 +102,11 @@ export function generateTrendData(
   currentData: ProvinceData,
   forecasts: ForecastData[]
 ): Array<{ year: number; population: number; type: 'actual' | 'forecast' }> {
-  const trend = [
+  const trend: Array<{ year: number; population: number; type: 'actual' | 'forecast' }> = [
     {
       year: 2023,
       population: currentData.totalPopulation,
-      type: 'actual' as const
+      type: 'actual'
     }
   ];
   
@@ -114,7 +114,7 @@ export function generateTrendData(
     trend.push({
       year: forecast.year,
       population: forecast.population,
-      type: 'forecast' as const
+      type: 'forecast'
     });
   }
   

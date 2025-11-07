@@ -3,7 +3,7 @@ export interface PopulationRecord {
   region?: string;
   region_type?: string;
   source_file?: string;
-  table_type?: 'table_1' | 'table_2';
+  table_type?: 'table_1' | 'table_2' | 'table_3' | 'table_4' | 'table_5' | 'table_6' | 'table_7' | 'table_8' | 'table_9' | 'table_10' | 'table_11' | 'table_12' | 'table_13' | 'table_14' | 'table_15' | 'table_16';
   level?: 'national' | 'province' | 'district';
 }
 
@@ -298,12 +298,24 @@ export function transformPopulationData(rawData: PopulationRecord[]): {
   districts: DistrictData[];
   national: ProvinceData | null;
   urbanLocalities: UrbanLocality[];
+  otherTables: Record<string, PopulationRecord[]>;
 } {
   const table1 = transformTable1Data(rawData);
   const urbanLocalities = transformTable2Data(rawData);
+  const otherTables: Record<string, PopulationRecord[]> = {};
+
+  // Group other tables (table_3..table_11) without transformation
+  for (const rec of rawData) {
+    const tt = rec.table_type;
+    if (tt && tt !== 'table_1' && tt !== 'table_2') {
+      if (!otherTables[tt]) otherTables[tt] = [];
+      otherTables[tt].push(rec);
+    }
+  }
 
   return {
     ...table1,
-    urbanLocalities
+    urbanLocalities,
+    otherTables
   };
 }
