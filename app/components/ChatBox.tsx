@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Loader2 } from 'lucide-react';
+import { Send, Bot, User, Loader2, TrendingUp, TrendingDown } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import ReactECharts from 'echarts-for-react';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  graphOption?: any; // ECharts option object
 }
 
 const ALL_SUGGESTED_QUESTIONS = [
@@ -37,14 +39,114 @@ const ALL_SUGGESTED_QUESTIONS = [
   "What is the growth rate in Sindh?",
   "How many people completed primary education?",
   "What percentage of structures are residential?",
-  "Compare education enrollment by province"
+  "Compare education enrollment by province",
+  "How many people have seeing disabilities?",
+  "What is the hearing disability rate?",
+  "Compare male and female populations by province",
+  "How many people have walking or climbing disabilities?",
+  "What percentage of households are semi-pakka?",
+  "Compare urban and rural literacy rates",
+  "How many people have communication disabilities?",
+  "What is the enrollment rate in middle schools?",
+  "Compare population growth rates across provinces",
+  "How many people have memorization or focus disabilities?",
+  "What percentage of structures are economic?",
+  "Compare transgender population across regions",
+  "How many people have self-care disabilities?",
+  "What is the enrollment rate in matric schools?",
+  "Compare pakka and kacha houses by province",
+  "How many people never attended school?",
+  "What is the enrollment rate in intermediate schools?",
+  "Compare functional limitations across provinces",
+  "How many people dropped out of school?",
+  "What percentage of structures are high-rise?",
+  "Compare rural and urban household sizes",
+  "How many people completed graduation or above?",
+  "What is the enrollment rate in graduation and above?",
+  "Compare disability rates in urban vs rural areas",
+  "How many residential structures are there?",
+  "What percentage of people live in urban areas?",
+  "Compare sex ratios across all provinces",
+  "How many people have ever attended school?",
+  "What is the population of Khyber Pakhtunkhwa?",
+  "Compare population density across provinces",
+  "How many economic structures are there?",
+  "What is the population of Balochistan?",
+  "Compare literacy rates in urban vs rural areas",
+  "How many structures are residential and economic?",
+  "What is the average household size in Punjab?",
+  "Compare disability types: seeing vs hearing",
+  "How many people are enrolled in primary education?",
+  "What percentage of households are kacha?",
+  "Compare population growth from 2017 to 2023",
+  "How many normal structures are there?",
+  "What is the transgender population in Pakistan?",
+  "Compare enrollment rates across education levels",
+  "How many people are out of school (5-16 years)?",
+  "What is the population of Islamabad?",
+  "Compare urban and rural growth rates",
+  "How many people have never been to school (5-16)?",
+  "What percentage of structures are under construction?",
+  "Compare male to female ratios across provinces",
+  "How many people completed middle education?",
+  "What is the functional limitation rate?",
+  "Compare pakka, semi-pakka, and kacha houses",
+  "How many people are enrolled in matric?",
+  "What is the population density in Punjab?",
+  "Compare disability rates across provinces",
+  "How many people are enrolled in intermediate?",
+  "What percentage of structures are other types?",
+  "Compare literacy rates by gender",
+  "How many jughi, jhompri, tent, or cave structures exist?",
+  "What is the population density in Sindh?",
+  "Compare education completion rates",
+  "How many people are enrolled in graduation and above?",
+  "What is the population density in Khyber Pakhtunkhwa?",
+  "Compare urban and rural disability rates",
+  "How many residential and economic combined structures?",
+  "What is the population density in Balochistan?"
+];
+
+const PREDICTION_QUESTIONS = [
+  "Predict Pakistan's population in 2030",
+  "What will be the literacy rate in Punjab by 2035?",
+  "Forecast urban population growth for the next 10 years",
+  "Predict population growth in Sindh for 2025-2030",
+  "What will be the sex ratio in Balochistan in 2030?",
+  "Forecast literacy rate improvement across provinces",
+  "Predict household growth in urban areas",
+  "What will be the population density in Islamabad by 2035?",
+  "Forecast rural to urban migration trends",
+  "Predict education enrollment rates for next 5 years",
+  "What will be the total population growth by 2040?",
+  "Forecast disability rates for next decade",
+  "Predict housing structure trends (pakka vs kacha)",
+  "What will be the growth rate in Khyber Pakhtunkhwa?",
+  "Forecast population by gender for 2030",
+  "Predict urbanization trends for all provinces",
+  "What will be the average household size in 2030?",
+  "Forecast literacy improvement in rural areas",
+  "Predict population distribution across provinces in 2035",
+  "What will be the growth rate comparison by 2030?"
 ];
 
 // Function to get random questions
-const getRandomQuestions = (count: number = 4): string[] => {
-  const shuffled = [...ALL_SUGGESTED_QUESTIONS].sort(() => 0.5 - Math.random());
+const getRandomQuestions = (count: number = 4, isPrediction: boolean = false): string[] => {
+  const questions = isPrediction ? PREDICTION_QUESTIONS : ALL_SUGGESTED_QUESTIONS;
+  const shuffled = [...questions].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 };
+
+// Helper function to detect if a question is about predictions
+function isPredictionQuestion(message: string): boolean {
+  const predictionKeywords = [
+    'predict', 'forecast', 'future', 'will be', 'by 2030', 'by 2035', 'by 2040',
+    'next 5 years', 'next 10 years', 'next decade', 'projection', 'trend',
+    'growth forecast', 'estimate future', 'upcoming', 'coming years'
+  ];
+  const lowerMessage = message.toLowerCase();
+  return predictionKeywords.some(keyword => lowerMessage.includes(keyword));
+}
 
 export default function ChatBox() {
   const [messages, setMessages] = useState<Message[]>([
@@ -55,13 +157,19 @@ export default function ChatBox() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>(getRandomQuestions(4));
+  const [predictionMode, setPredictionMode] = useState(false);
+  const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Initialize suggested questions on client side only to avoid hydration mismatch
+  useEffect(() => {
+    setSuggestedQuestions(getRandomQuestions(4, predictionMode));
+  }, [predictionMode]);
 
   useEffect(() => {
     scrollToBottom();
@@ -86,6 +194,29 @@ export default function ChatBox() {
         content: msg.content
       }));
 
+      // For prediction questions, fetch prediction graph separately
+      let graphOption = null;
+      if (isPredictionQuestion(textToSend)) {
+        try {
+          const predictionResponse = await fetch('/api/predictions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: textToSend
+            }),
+          });
+          
+          if (predictionResponse.ok) {
+            const predictionData = await predictionResponse.json();
+            graphOption = predictionData.graphOption || null;
+          }
+        } catch (error) {
+          console.error('Error fetching prediction graph:', error);
+        }
+      }
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -93,7 +224,8 @@ export default function ChatBox() {
         },
         body: JSON.stringify({
           message: textToSend,
-          conversationHistory: conversationHistory
+          conversationHistory: conversationHistory,
+          predictionMode: predictionMode
         }),
       });
 
@@ -109,13 +241,16 @@ export default function ChatBox() {
       
       const assistantMessage: Message = {
         role: 'assistant',
-        content: data.message
+        content: data.message,
+        graphOption: graphOption || data.graphOption || undefined
       };
 
       setMessages(prev => [...prev, assistantMessage]);
       
-      // Update suggested questions after each response
-      setSuggestedQuestions(getRandomQuestions(4));
+      // Update suggested questions after each response (client-side only)
+      setTimeout(() => {
+        setSuggestedQuestions(getRandomQuestions(4, predictionMode));
+      }, 0);
     } catch (error: any) {
       console.error('Error sending message:', error);
       let errorText = 'Sorry, I encountered an error. Please try again.';
@@ -156,14 +291,36 @@ export default function ChatBox() {
     <div className="flex flex-col h-[calc(100vh-200px)] max-h-[800px] bg-white rounded-xl shadow-lg border-2 border-gray-200 overflow-hidden">
       {/* Chat Header */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 sm:p-4 border-b-2 border-blue-700">
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="bg-white/20 p-1.5 sm:p-2 rounded-lg">
-            <Bot className="h-4 w-4 sm:h-5 sm:w-5" />
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="bg-white/20 p-1.5 sm:p-2 rounded-lg">
+              <Bot className="h-4 w-4 sm:h-5 sm:w-5" />
+            </div>
+            <div>
+              <h2 className="text-base sm:text-lg font-bold">Census Data Assistant</h2>
+              <p className="text-xs sm:text-sm text-blue-100">
+                {predictionMode ? '🔮 Prediction Mode: Ask about future trends' : 'Ask me anything about Pakistan\'s 2023 Census'}
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-base sm:text-lg font-bold">Census Data Assistant</h2>
-            <p className="text-xs sm:text-sm text-blue-100">Ask me anything about Pakistan's 2023 Census</p>
-          </div>
+          <button
+            onClick={() => {
+              const newMode = !predictionMode;
+              setPredictionMode(newMode);
+              // Update questions will happen in useEffect
+            }}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all ${
+              predictionMode
+                ? 'bg-green-500 hover:bg-green-600 text-white'
+                : 'bg-white/20 hover:bg-white/30 text-white'
+            }`}
+            title={predictionMode ? 'Turn off Prediction Mode' : 'Turn on Prediction Mode'}
+          >
+            {predictionMode ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
+            <span className="text-xs sm:text-sm font-semibold hidden sm:inline">
+              {predictionMode ? 'Prediction ON' : 'Prediction OFF'}
+            </span>
+          </button>
         </div>
       </div>
 
@@ -220,6 +377,19 @@ export default function ChatBox() {
                   >
                     {message.content}
                   </ReactMarkdown>
+                  
+                  {/* Render graph if available */}
+                  {message.graphOption && (
+                    <div className="mt-4 w-full bg-white rounded-lg border-2 border-gray-200 p-4" style={{ minHeight: '350px' }}>
+                      <div className="h-[350px] w-full">
+                        <ReactECharts 
+                          option={message.graphOption} 
+                          style={{ height: '100%', width: '100%' }}
+                          opts={{ renderer: 'svg' }}
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <p className="text-sm sm:text-base whitespace-pre-wrap break-words">
@@ -252,13 +422,19 @@ export default function ChatBox() {
       {/* Suggested Questions - Show after every message */}
       {!isLoading && suggestedQuestions.length > 0 && (
         <div className="p-3 sm:p-4 bg-white border-t-2 border-gray-200">
-          <p className="text-xs font-semibold text-gray-600 mb-2">💡 Suggested Questions:</p>
+          <p className="text-xs font-semibold text-gray-600 mb-2">
+            {predictionMode ? '🔮 Prediction Questions:' : '💡 Suggested Questions:'}
+          </p>
           <div className="flex flex-wrap gap-2">
             {suggestedQuestions.map((question, index) => (
               <button
                 key={index}
                 onClick={() => handleSuggestedQuestion(question)}
-                className="text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 sm:py-2 bg-gray-100 hover:bg-blue-50 text-gray-700 hover:text-blue-600 rounded-lg border border-gray-200 hover:border-blue-300 transition-all duration-200 hover:shadow-sm active:scale-95"
+                className={`text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border transition-all duration-200 hover:shadow-sm active:scale-95 ${
+                  predictionMode
+                    ? 'bg-purple-50 hover:bg-purple-100 text-purple-700 hover:text-purple-800 border-purple-200 hover:border-purple-300'
+                    : 'bg-gray-100 hover:bg-blue-50 text-gray-700 hover:text-blue-600 border-gray-200 hover:border-blue-300'
+                }`}
               >
                 {question}
               </button>
